@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/domain/repositories/auth_repository.dart';
+import '../../../../core/errors/auth_exception.dart';
 import 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
@@ -14,13 +15,19 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   void _monitorAuthState() {
-    _authSubscription = _authRepository.authStateChanges.listen((user) {
-      if (user != null) {
-        emit(AuthAuthenticated(user: user));
-      } else {
+    _authSubscription = _authRepository.authStateChanges.listen(
+      (user) {
+        if (user != null) {
+          emit(AuthAuthenticated(user: user));
+        } else {
+          emit(AuthUnauthenticated());
+        }
+      },
+      onError: (error) {
+        // Em caso de erro no stream, emite estado não autenticado
         emit(AuthUnauthenticated());
-      }
-    });
+      },
+    );
   }
 
   Future<void> signInWithEmailAndPassword({
@@ -38,10 +45,18 @@ class AuthCubit extends Cubit<AuthState> {
       if (user != null) {
         emit(AuthAuthenticated(user: user));
       } else {
-        emit(const AuthError(message: 'Falha na autenticação'));
+        emit(
+          const AuthError(message: 'Falha na autenticação. Tente novamente.'),
+        );
       }
+    } on AuthException catch (e) {
+      emit(AuthError(message: e.message));
     } catch (e) {
-      emit(AuthError(message: e.toString()));
+      emit(
+        const AuthError(
+          message: 'Erro inesperado. Verifique sua conexão e tente novamente.',
+        ),
+      );
     }
   }
 
@@ -60,10 +75,18 @@ class AuthCubit extends Cubit<AuthState> {
       if (user != null) {
         emit(AuthAuthenticated(user: user));
       } else {
-        emit(const AuthError(message: 'Falha ao criar conta'));
+        emit(
+          const AuthError(message: 'Falha ao criar conta. Tente novamente.'),
+        );
       }
+    } on AuthException catch (e) {
+      emit(AuthError(message: e.message));
     } catch (e) {
-      emit(AuthError(message: e.toString()));
+      emit(
+        const AuthError(
+          message: 'Erro inesperado. Verifique sua conexão e tente novamente.',
+        ),
+      );
     }
   }
 
@@ -72,8 +95,10 @@ class AuthCubit extends Cubit<AuthState> {
       emit(AuthLoading());
       await _authRepository.signOut();
       emit(AuthUnauthenticated());
+    } on AuthException catch (e) {
+      emit(AuthError(message: e.message));
     } catch (e) {
-      emit(AuthError(message: e.toString()));
+      emit(const AuthError(message: 'Erro ao fazer logout. Tente novamente.'));
     }
   }
 
@@ -86,7 +111,14 @@ class AuthCubit extends Cubit<AuthState> {
         emit(AuthUnauthenticated());
       }
     } catch (e) {
-      emit(AuthError(message: e.toString()));
+      // Em caso de erro ao verificar status, assume não autenticado
+      emit(AuthUnauthenticated());
+    }
+  }
+
+  void clearError() {
+    if (state is AuthError) {
+      emit(AuthUnauthenticated());
     }
   }
 

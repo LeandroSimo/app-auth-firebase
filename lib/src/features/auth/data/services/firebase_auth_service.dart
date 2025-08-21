@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import '../models/user_model.dart';
 import '../domain/entities/user.dart' as domain;
+import '../../../../core/errors/auth_exception.dart';
 
 class FirebaseAuthService {
   final firebase_auth.FirebaseAuth _firebaseAuth;
@@ -10,8 +11,29 @@ class FirebaseAuthService {
 
   // Stream de mudanças no estado de autenticação
   Stream<domain.User?> get authStateChanges {
-    return _firebaseAuth.authStateChanges().map((firebaseUser) {
+    try {
+      return _firebaseAuth.authStateChanges().map((firebaseUser) {
+        if (firebaseUser == null) return null;
+        final userModel = UserModel.fromFirebaseUser(firebaseUser);
+        return domain.User(
+          uid: userModel.uid,
+          email: userModel.email,
+          displayName: userModel.displayName,
+          photoURL: userModel.photoURL,
+        );
+      });
+    } catch (e) {
+      // Em caso de erro no stream, retorna um stream que emite null
+      return Stream.value(null);
+    }
+  }
+
+  // Usuário atual
+  Future<domain.User?> getCurrentUser() async {
+    try {
+      final firebaseUser = _firebaseAuth.currentUser;
       if (firebaseUser == null) return null;
+
       final userModel = UserModel.fromFirebaseUser(firebaseUser);
       return domain.User(
         uid: userModel.uid,
@@ -19,21 +41,10 @@ class FirebaseAuthService {
         displayName: userModel.displayName,
         photoURL: userModel.photoURL,
       );
-    });
-  }
-
-  // Usuário atual
-  Future<domain.User?> getCurrentUser() async {
-    final firebaseUser = _firebaseAuth.currentUser;
-    if (firebaseUser == null) return null;
-
-    final userModel = UserModel.fromFirebaseUser(firebaseUser);
-    return domain.User(
-      uid: userModel.uid,
-      email: userModel.email,
-      displayName: userModel.displayName,
-      photoURL: userModel.photoURL,
-    );
+    } catch (e) {
+      // Se houver erro ao obter usuário atual, retorna null
+      return null;
+    }
   }
 
   // Login com email e senha
@@ -56,8 +67,13 @@ class FirebaseAuthService {
         displayName: userModel.displayName,
         photoURL: userModel.photoURL,
       );
+    } on firebase_auth.FirebaseAuthException catch (e) {
+      throw AuthException.fromFirebaseAuthException(e);
     } catch (e) {
-      throw Exception('Erro ao fazer login: ${e.toString()}');
+      throw AuthException(
+        message: 'Erro inesperado ao fazer login. Tente novamente.',
+        code: 'unknown-error',
+      );
     }
   }
 
@@ -81,8 +97,13 @@ class FirebaseAuthService {
         displayName: userModel.displayName,
         photoURL: userModel.photoURL,
       );
+    } on firebase_auth.FirebaseAuthException catch (e) {
+      throw AuthException.fromFirebaseAuthException(e);
     } catch (e) {
-      throw Exception('Erro ao criar conta: ${e.toString()}');
+      throw AuthException(
+        message: 'Erro inesperado ao criar conta. Tente novamente.',
+        code: 'unknown-error',
+      );
     }
   }
 
@@ -90,8 +111,13 @@ class FirebaseAuthService {
   Future<void> signOut() async {
     try {
       await _firebaseAuth.signOut();
+    } on firebase_auth.FirebaseAuthException catch (e) {
+      throw AuthException.fromFirebaseAuthException(e);
     } catch (e) {
-      throw Exception('Erro ao fazer logout: ${e.toString()}');
+      throw AuthException(
+        message: 'Erro inesperado ao fazer logout. Tente novamente.',
+        code: 'unknown-error',
+      );
     }
   }
 }

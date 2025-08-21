@@ -40,6 +40,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 SnackBar(
                   content: Text(state.message),
                   backgroundColor: Colors.red,
+                  duration: const Duration(seconds: 4),
+                  action: SnackBarAction(
+                    label: 'OK',
+                    textColor: Colors.white,
+                    onPressed: () {
+                      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                      context.read<AuthCubit>().clearError();
+                    },
+                  ),
                 ),
               );
             } else if (state is AuthAuthenticated) {
@@ -158,13 +167,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       child: ElevatedButton(
                         onPressed: state is AuthLoading ? null : _register,
                         child: state is AuthLoading
-                            ? const CircularProgressIndicator()
+                            ? const SizedBox(
+                                height: 20,
+                                width: 20,
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                                ),
+                              )
                             : const Text('Criar Conta'),
                       ),
                     ),
                     const SizedBox(height: 16),
                     TextButton(
-                      onPressed: () {
+                      onPressed: state is AuthLoading ? null : () {
                         Navigator.of(context).pop();
                       },
                       child: const Text('Já tem conta? Faça login'),

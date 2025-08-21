@@ -37,6 +37,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 SnackBar(
                   content: Text(state.message),
                   backgroundColor: Colors.red,
+                  duration: const Duration(seconds: 4),
+                  action: SnackBarAction(
+                    label: 'OK',
+                    textColor: Colors.white,
+                    onPressed: () {
+                      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                      context.read<AuthCubit>().clearError();
+                    },
+                  ),
                 ),
               );
             } else if (state is AuthAuthenticated) {
@@ -123,13 +132,20 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: ElevatedButton(
                         onPressed: state is AuthLoading ? null : _login,
                         child: state is AuthLoading
-                            ? const CircularProgressIndicator()
+                            ? const SizedBox(
+                                height: 20,
+                                width: 20,
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                                ),
+                              )
                             : const Text('Entrar'),
                       ),
                     ),
                     const SizedBox(height: 16),
                     TextButton(
-                      onPressed: () {
+                      onPressed: state is AuthLoading ? null : () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (_) => const RegisterScreen(),
