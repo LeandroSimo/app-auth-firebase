@@ -1,16 +1,29 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../auth/presentation/bloc/auth_cubit.dart';
 import '../../../auth/presentation/bloc/auth_state.dart';
 import '../../../auth/presentation/screens/login_screen.dart';
+import '../../../profile/presentation/screens/profile_image_test_screen.dart';
 import '../../../posts/presentation/bloc/post_cubit.dart';
 import '../../../posts/presentation/bloc/post_state.dart';
 import '../../../posts/presentation/widgets/post_item.dart';
 import '../../../posts/presentation/screens/post_detail_screen.dart';
+import '../../../../core/services/image_picker_service.dart';
+import '../../../../core/services/firebase_storage_service.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   static const String routeName = '/home';
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final ImagePickerService _imagePickerService = ImagePickerService();
+  final FirebaseStorageService _storageService = FirebaseStorageService();
+  bool _isUploadingPhoto = false;
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +65,14 @@ class HomeScreen extends StatelessWidget {
           },
         ),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.edit),
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const ProfileImageTestScreen()),
+            ),
+            tooltip: 'Editar Perfil',
+          ),
           IconButton(
             icon: const Icon(Icons.logout),
             onPressed: () => _showLogoutDialog(context),
@@ -201,52 +222,37 @@ class HomeScreen extends StatelessWidget {
                     context,
                     icon: Icons.camera_alt,
                     label: 'Câmera',
-                    onTap: () {
-                      Navigator.pop(context);
-                      _takePhoto();
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text(
-                            'Funcionalidade de câmera será implementada',
-                          ),
-                          duration: Duration(seconds: 2),
-                        ),
-                      );
-                    },
+                    isLoading: _isUploadingPhoto,
+                    onTap: _isUploadingPhoto
+                        ? null
+                        : () {
+                            Navigator.pop(context);
+                            _takePhoto();
+                          },
                   ),
                   _buildPhotoOption(
                     context,
                     icon: Icons.photo_library,
                     label: 'Galeria',
-                    onTap: () {
-                      Navigator.pop(context);
-                      _pickFromGallery();
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text(
-                            'Funcionalidade de galeria será implementada',
-                          ),
-                          duration: Duration(seconds: 2),
-                        ),
-                      );
-                    },
+                    isLoading: _isUploadingPhoto,
+                    onTap: _isUploadingPhoto
+                        ? null
+                        : () {
+                            Navigator.pop(context);
+                            _pickFromGallery();
+                          },
                   ),
                   _buildPhotoOption(
                     context,
                     icon: Icons.delete,
                     label: 'Remover',
-                    onTap: () {
-                      Navigator.pop(context);
-                      _removePhoto();
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text(
-                            'Funcionalidade de remoção será implementada',
-                          ),
-                          duration: Duration(seconds: 2),
-                        ),
-                      );
-                    },
+                    isLoading: _isUploadingPhoto,
+                    onTap: _isUploadingPhoto
+                        ? null
+                        : () {
+                            Navigator.pop(context);
+                            _removePhoto();
+                          },
                   ),
                 ],
               ),
@@ -262,41 +268,209 @@ class HomeScreen extends StatelessWidget {
     BuildContext context, {
     required IconData icon,
     required String label,
-    required VoidCallback onTap,
+    required VoidCallback? onTap,
+    bool isLoading = false,
   }) {
     return GestureDetector(
       onTap: onTap,
-      child: Column(
-        children: [
-          Container(
-            width: 60,
-            height: 60,
-            decoration: BoxDecoration(
-              color: Theme.of(context).primaryColor.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(30),
+      child: Opacity(
+        opacity: onTap == null ? 0.5 : 1.0,
+        child: Column(
+          children: [
+            Container(
+              width: 60,
+              height: 60,
+              decoration: BoxDecoration(
+                color: Theme.of(context).primaryColor.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(30),
+              ),
+              child: isLoading
+                  ? const Center(
+                      child: SizedBox(
+                        width: 30,
+                        height: 30,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      ),
+                    )
+                  : Icon(icon, color: Theme.of(context).primaryColor, size: 30),
             ),
-            child: Icon(icon, color: Theme.of(context).primaryColor, size: 30),
-          ),
-          const SizedBox(height: 8),
-          Text(label, style: TextStyle(fontSize: 12, color: Colors.grey[700])),
-        ],
+            const SizedBox(height: 8),
+            Text(
+              isLoading ? 'Processando...' : label,
+              style: TextStyle(fontSize: 12, color: Colors.grey[700]),
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  void _takePhoto() {
-    // TODO: Implementar captura de foto com camera
-    // ScaffoldMessenger será chamado no contexto do onTap
+  void _takePhoto() async {
+    if (_isUploadingPhoto) return;
+
+    try {
+      setState(() {
+        _isUploadingPhoto = true;
+      });
+
+      final imageFile = await _imagePickerService.pickImageFromCamera();
+      if (imageFile != null) {
+        await _uploadProfilePhoto(imageFile);
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Erro ao capturar foto: $e'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    } finally {
+      if (mounted) {
+        setState(() {
+          _isUploadingPhoto = false;
+        });
+      }
+    }
   }
 
-  void _pickFromGallery() {
-    // TODO: Implementar seleção de foto da galeria
-    // ScaffoldMessenger será chamado no contexto do onTap
+  void _pickFromGallery() async {
+    if (_isUploadingPhoto) return;
+
+    try {
+      setState(() {
+        _isUploadingPhoto = true;
+      });
+
+      final imageFile = await _imagePickerService.pickImageFromGallery();
+      if (imageFile != null) {
+        await _uploadProfilePhoto(imageFile);
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Erro ao selecionar foto: $e'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    } finally {
+      if (mounted) {
+        setState(() {
+          _isUploadingPhoto = false;
+        });
+      }
+    }
   }
 
-  void _removePhoto() {
-    // TODO: Implementar remoção de foto do perfil
-    // ScaffoldMessenger será chamado no contexto do onTap
+  Future<void> _uploadProfilePhoto(File imageFile) async {
+    try {
+      // Primeiro verifica se o Storage está configurado
+      final isStorageConnected = await _storageService.checkStorageConnection();
+      if (!isStorageConnected) {
+        throw Exception('Firebase Storage não está configurado corretamente');
+      }
+
+      // Faz upload da imagem para o Firebase Storage
+      final photoURL = await _storageService.uploadProfilePhoto(imageFile);
+
+      // Atualiza o perfil do usuário no Firebase Auth
+      if (mounted) {
+        await context.read<AuthCubit>().updateUserPhotoURL(photoURL);
+
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Foto do perfil atualizada com sucesso!'),
+              backgroundColor: Colors.green,
+              duration: Duration(seconds: 3),
+            ),
+          );
+        }
+      }
+    } catch (e) {
+      if (mounted) {
+        String errorMessage = 'Erro ao atualizar foto do perfil';
+
+        // Personaliza a mensagem baseada no tipo de erro
+        final errorString = e.toString();
+        if (errorString.contains('Storage não está configurado')) {
+          errorMessage =
+              'Firebase Storage não configurado. Verifique as configurações.';
+        } else if (errorString.contains('Sem permissão')) {
+          errorMessage =
+              'Sem permissão para fazer upload. Verifique as regras do Storage.';
+        } else if (errorString.contains('Timeout')) {
+          errorMessage = 'Upload demorou muito. Tente novamente.';
+        } else if (errorString.contains('não está logado')) {
+          errorMessage = 'Usuário não está logado. Faça login novamente.';
+        }
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(errorMessage),
+                const SizedBox(height: 4),
+                Text(
+                  'Detalhes: ${e.toString()}',
+                  style: const TextStyle(fontSize: 12, color: Colors.white70),
+                ),
+              ],
+            ),
+            backgroundColor: Colors.red,
+            duration: const Duration(seconds: 5),
+            action: SnackBarAction(
+              label: 'OK',
+              textColor: Colors.white,
+              onPressed: () =>
+                  ScaffoldMessenger.of(context).hideCurrentSnackBar(),
+            ),
+          ),
+        );
+      }
+    }
+  }
+
+  void _removePhoto() async {
+    if (_isUploadingPhoto) return;
+
+    try {
+      setState(() {
+        _isUploadingPhoto = true;
+      });
+
+      // Remove a foto do perfil (define como null/vazio)
+      if (mounted) {
+        await context.read<AuthCubit>().updateUserPhotoURL('');
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Foto do perfil removida com sucesso!'),
+            backgroundColor: Colors.green,
+          ),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Erro ao remover foto do perfil: $e'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    } finally {
+      if (mounted) {
+        setState(() {
+          _isUploadingPhoto = false;
+        });
+      }
+    }
   }
 
   void _showLogoutDialog(BuildContext context) {

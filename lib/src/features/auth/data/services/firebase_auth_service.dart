@@ -127,4 +127,64 @@ class FirebaseAuthService {
       );
     }
   }
+
+  // Atualizar foto do perfil
+  Future<void> updateUserPhotoURL(String photoURL) async {
+    try {
+      final user = _firebaseAuth.currentUser;
+      if (user == null) {
+        throw AuthException(
+          message: 'Usuário não está logado.',
+          code: 'user-not-logged-in',
+        );
+      }
+
+      await user.updatePhotoURL(photoURL);
+      await user.reload(); // Recarrega os dados do usuário
+    } on firebase_auth.FirebaseAuthException catch (e) {
+      throw AuthException.fromFirebaseAuthException(e);
+    } catch (e) {
+      throw AuthException(
+        message:
+            'Erro inesperado ao atualizar foto do perfil. Tente novamente.',
+        code: 'unknown-error',
+      );
+    }
+  }
+
+  // Atualizar nome de exibição
+  Future<void> updateUserDisplayName(String displayName) async {
+    try {
+      final user = _firebaseAuth.currentUser;
+      if (user == null) {
+        throw AuthException(
+          message: 'Usuário não está logado.',
+          code: 'user-not-logged-in',
+        );
+      }
+
+      await user.updateDisplayName(displayName);
+      await user.reload(); // Recarrega os dados do usuário
+    } on firebase_auth.FirebaseAuthException catch (e) {
+      throw AuthException.fromFirebaseAuthException(e);
+    } catch (e) {
+      throw AuthException(
+        message:
+            'Erro inesperado ao atualizar nome de exibição. Tente novamente.',
+        code: 'unknown-error',
+      );
+    }
+  }
+
+  // Recarregar dados do usuário
+  Future<void> reloadUser() async {
+    try {
+      final user = _firebaseAuth.currentUser;
+      if (user != null) {
+        await user.reload();
+      }
+    } catch (e) {
+      // Ignorar erros de reload, não é crítico
+    }
+  }
 }

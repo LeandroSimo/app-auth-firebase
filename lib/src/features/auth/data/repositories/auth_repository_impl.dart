@@ -44,4 +44,19 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<void> signOut() async {
     await _firebaseAuthService.signOut();
   }
+
+  @override
+  Future<void> updateUserPhotoURL(String photoURL) async {
+    await _firebaseAuthService.updateUserPhotoURL(photoURL);
+  }
+
+  @override
+  Future<void> updateUserDisplayName(String displayName) async {
+    await _firebaseAuthService.updateUserDisplayName(displayName);
+  }
+
+  @override
+  Future<void> reloadUser() async {
+    await _firebaseAuthService.reloadUser();
+  }
 }

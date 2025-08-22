@@ -17,4 +17,10 @@ abstract class AuthRepository {
   Future<User?> getCurrentUser();
 
   Stream<User?> get authStateChanges;
+
+  Future<void> updateUserPhotoURL(String photoURL);
+
+  Future<void> updateUserDisplayName(String displayName);
+
+  Future<void> reloadUser();
 }

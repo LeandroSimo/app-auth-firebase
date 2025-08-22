@@ -124,6 +124,74 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
+  Future<void> updateUserPhotoURL(String photoURL) async {
+    try {
+      emit(AuthLoading());
+
+      await _authRepository.updateUserPhotoURL(photoURL);
+      await _authRepository.reloadUser();
+
+      final user = await _authRepository.getCurrentUser();
+      if (user != null) {
+        emit(AuthAuthenticated(user: user));
+      } else {
+        emit(
+          const AuthError(
+            message: 'Erro ao obter dados atualizados do usuário.',
+          ),
+        );
+      }
+    } on AuthException catch (e) {
+      emit(AuthError(message: e.message));
+    } catch (e) {
+      emit(
+        const AuthError(
+          message: 'Erro inesperado ao atualizar foto do perfil.',
+        ),
+      );
+    }
+  }
+
+  Future<void> updateUserDisplayName(String displayName) async {
+    try {
+      emit(AuthLoading());
+
+      await _authRepository.updateUserDisplayName(displayName);
+      await _authRepository.reloadUser();
+
+      final user = await _authRepository.getCurrentUser();
+      if (user != null) {
+        emit(AuthAuthenticated(user: user));
+      } else {
+        emit(
+          const AuthError(
+            message: 'Erro ao obter dados atualizados do usuário.',
+          ),
+        );
+      }
+    } on AuthException catch (e) {
+      emit(AuthError(message: e.message));
+    } catch (e) {
+      emit(
+        const AuthError(
+          message: 'Erro inesperado ao atualizar nome de exibição.',
+        ),
+      );
+    }
+  }
+
+  Future<void> refreshUserData() async {
+    try {
+      await _authRepository.reloadUser();
+      final user = await _authRepository.getCurrentUser();
+      if (user != null) {
+        emit(AuthAuthenticated(user: user));
+      }
+    } catch (e) {
+      // Ignorar erros de refresh, manter estado atual
+    }
+  }
+
   @override
   Future<void> close() {
     _authSubscription?.cancel();
