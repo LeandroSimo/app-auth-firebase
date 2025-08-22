@@ -4,6 +4,7 @@ import '../../../home/presentation/screens/home_screen.dart';
 import '../bloc/auth_cubit.dart';
 import '../bloc/auth_state.dart';
 import 'register_screen.dart';
+import '../../../../core/validators/validation_mixin.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String routeName = '/login';
@@ -13,7 +14,7 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends State<LoginScreen> with ValidationMixin {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -82,17 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         prefixIcon: Icon(Icons.email_outlined),
                         border: OutlineInputBorder(),
                       ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Por favor, insira seu e-mail';
-                        }
-                        if (!RegExp(
-                          r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
-                        ).hasMatch(value)) {
-                          return 'Por favor, insira um e-mail válido';
-                        }
-                        return null;
-                      },
+                      validator: validateEmail,
                     ),
                     const SizedBox(height: 16),
                     TextFormField(
@@ -115,15 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         border: const OutlineInputBorder(),
                       ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Por favor, insira sua senha';
-                        }
-                        if (value.length < 6) {
-                          return 'A senha deve ter pelo menos 6 caracteres';
-                        }
-                        return null;
-                      },
+                      validator: validatePassword,
                     ),
                     const SizedBox(height: 24),
                     SizedBox(
