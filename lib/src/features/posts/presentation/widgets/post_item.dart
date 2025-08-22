@@ -1,3 +1,4 @@
+import 'package:app_test/src/core/utils/extensions.dart';
 import 'package:flutter/material.dart';
 import '../../data/domain/entities/post.dart';
 
@@ -10,13 +11,16 @@ class PostItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      margin: EdgeInsets.symmetric(
+        horizontal: context.mediaQuery.width * 0.04,
+        vertical: context.mediaQuery.height * 0.01,
+      ),
       elevation: 2,
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(context.mediaQuery.width * 0.02),
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: EdgeInsets.all(context.mediaQuery.width * 0.04),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -29,7 +33,7 @@ class PostItem extends StatelessWidget {
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
-              const SizedBox(height: 12),
+              SizedBox(height: context.mediaQuery.height * 0.015),
 
               // Conteúdo
               Text(
@@ -43,7 +47,7 @@ class PostItem extends StatelessWidget {
 
               // Botão "Ver mais" se o conteúdo foi truncado
               if (post.isContentTruncated) ...[
-                const SizedBox(height: 8),
+                SizedBox(height: context.mediaQuery.height * 0.01),
                 GestureDetector(
                   onTap: onTap,
                   child: Text(
@@ -69,7 +73,7 @@ class PostItem extends StatelessWidget {
                         size: 16,
                         color: Colors.grey[600],
                       ),
-                      const SizedBox(width: 4),
+                      SizedBox(width: context.mediaQuery.width * 0.01),
                       Text(
                         'Autor ${post.userId}',
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
@@ -82,10 +86,10 @@ class PostItem extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.calendar_today_outlined,
-                        size: 16,
+                        size: context.mediaQuery.width * 0.04,
                         color: Colors.grey[600],
                       ),
-                      const SizedBox(width: 4),
+                      SizedBox(width: context.mediaQuery.width * 0.01),
                       Text(
                         post.formattedPublishDate,
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(

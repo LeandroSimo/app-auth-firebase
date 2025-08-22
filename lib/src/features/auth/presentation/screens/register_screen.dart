@@ -1,3 +1,4 @@
+import 'package:app_test/src/core/utils/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/auth_cubit.dart';
@@ -63,7 +64,7 @@ class _RegisterScreenState extends State<RegisterScreen> with ValidationMixin {
           builder: (context, state) {
             return SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.all(24.0),
+                padding: EdgeInsets.all(context.mediaQuery.width * 0.05),
                 child: Form(
                   key: _formKey,
                   child: Column(
@@ -71,16 +72,16 @@ class _RegisterScreenState extends State<RegisterScreen> with ValidationMixin {
                     children: [
                       Icon(
                         Icons.person_add_outlined,
-                        size: 80,
+                        size: context.mediaQuery.width * 0.2,
                         color: Theme.of(context).primaryColor,
                       ),
-                      const SizedBox(height: 32),
+                      SizedBox(height: context.mediaQuery.height * 0.04),
                       Text(
                         'Criar Conta',
                         style: Theme.of(context).textTheme.headlineMedium
                             ?.copyWith(fontWeight: FontWeight.bold),
                       ),
-                      const SizedBox(height: 32),
+                      SizedBox(height: context.mediaQuery.height * 0.04),
                       TextFormField(
                         controller: _nameController,
                         textCapitalization: TextCapitalization.words,
@@ -91,7 +92,7 @@ class _RegisterScreenState extends State<RegisterScreen> with ValidationMixin {
                         ),
                         validator: validateName,
                       ),
-                      const SizedBox(height: 16),
+                      SizedBox(height: context.mediaQuery.height * 0.02),
                       TextFormField(
                         controller: _emailController,
                         keyboardType: TextInputType.emailAddress,
@@ -102,7 +103,7 @@ class _RegisterScreenState extends State<RegisterScreen> with ValidationMixin {
                         ),
                         validator: validateEmail,
                       ),
-                      const SizedBox(height: 16),
+                      SizedBox(height: context.mediaQuery.height * 0.02),
                       TextFormField(
                         controller: _passwordController,
                         obscureText: _obscurePassword,
@@ -125,7 +126,7 @@ class _RegisterScreenState extends State<RegisterScreen> with ValidationMixin {
                         ),
                         validator: validatePassword,
                       ),
-                      const SizedBox(height: 16),
+                      SizedBox(height: context.mediaQuery.height * 0.02),
                       TextFormField(
                         controller: _confirmPasswordController,
                         obscureText: _obscureConfirmPassword,
@@ -152,17 +153,17 @@ class _RegisterScreenState extends State<RegisterScreen> with ValidationMixin {
                           _passwordController.text,
                         ),
                       ),
-                      const SizedBox(height: 24),
+                      SizedBox(height: context.mediaQuery.height * 0.03),
                       SizedBox(
                         width: double.infinity,
-                        height: 50,
+                        height: context.mediaQuery.height * 0.06,
                         child: ElevatedButton(
                           onPressed: state is AuthLoading ? null : _register,
                           child: state is AuthLoading
-                              ? const SizedBox(
-                                  height: 20,
-                                  width: 20,
-                                  child: CircularProgressIndicator(
+                              ? SizedBox(
+                                  height: context.mediaQuery.height * 0.025,
+                                  width: context.mediaQuery.height * 0.025,
+                                  child: const CircularProgressIndicator(
                                     strokeWidth: 2,
                                     valueColor: AlwaysStoppedAnimation<Color>(
                                       Colors.white,
@@ -172,7 +173,7 @@ class _RegisterScreenState extends State<RegisterScreen> with ValidationMixin {
                               : const Text('Criar Conta'),
                         ),
                       ),
-                      const SizedBox(height: 16),
+                      SizedBox(height: context.mediaQuery.height * 0.02),
                       TextButton(
                         onPressed: state is AuthLoading
                             ? null

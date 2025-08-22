@@ -99,7 +99,7 @@ class PostDetailScreen extends StatelessWidget {
                                 decoration: BoxDecoration(
                                   color: Theme.of(
                                     context,
-                                  ).primaryColor.withOpacity(0.1),
+                                  ).primaryColor.withAlpha((0.1 * 255).round()),
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: Text(

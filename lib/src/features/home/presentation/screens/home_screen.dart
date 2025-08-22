@@ -1,10 +1,11 @@
 import 'dart:io';
+import 'package:app_test/src/core/utils/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../auth/presentation/bloc/auth_cubit.dart';
 import '../../../auth/presentation/bloc/auth_state.dart';
 import '../../../auth/presentation/screens/login_screen.dart';
-import '../../../profile/presentation/screens/profile_image_test_screen.dart';
+// import '../../../profile/presentation/screens/profile_image_test_screen.dart';
 import '../../../posts/presentation/bloc/post_cubit.dart';
 import '../../../posts/presentation/bloc/post_state.dart';
 import '../../../posts/presentation/widgets/post_item.dart';
@@ -38,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   GestureDetector(
                     onTap: () => _showPhotoOptions(context),
                     child: CircleAvatar(
-                      radius: 20,
+                      radius: context.mediaQuery.width * 0.05,
                       backgroundImage: state.user.photoURL != null
                           ? NetworkImage(state.user.photoURL!)
                           : null,
@@ -47,12 +48,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           : null,
                     ),
                   ),
-                  const SizedBox(width: 12),
+                  SizedBox(width: context.mediaQuery.width * 0.03),
                   Expanded(
                     child: Text(
                       _getUserDisplayName(state.user),
-                      style: const TextStyle(
-                        fontSize: 18,
+                      style: TextStyle(
+                        fontSize: context.mediaQuery.width * 0.045,
                         fontWeight: FontWeight.w600,
                       ),
                       overflow: TextOverflow.ellipsis,
@@ -67,10 +68,14 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: [
           IconButton(
             icon: const Icon(Icons.edit),
-            onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => const ProfileImageTestScreen()),
-            ),
+            onPressed: () {
+              // TODO: Implementar edição de perfil
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Edição de perfil em desenvolvimento'),
+                ),
+              );
+            },
             tooltip: 'Editar Perfil',
           ),
           IconButton(
@@ -106,9 +111,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         itemBuilder: (context, index) {
                           if (index >= postState.posts.length) {
                             // Indicador de carregamento no final da lista
-                            return const Padding(
-                              padding: EdgeInsets.all(16.0),
-                              child: Center(child: CircularProgressIndicator()),
+                            return Padding(
+                              padding: EdgeInsets.all(
+                                context.mediaQuery.width * 0.04,
+                              ),
+                              child: const Center(
+                                child: CircularProgressIndicator(),
+                              ),
                             );
                           }
 
@@ -142,16 +151,16 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           Icon(
                             Icons.error_outline,
-                            size: 64,
+                            size: context.mediaQuery.width * 0.16,
                             color: Colors.grey[400],
                           ),
-                          const SizedBox(height: 16),
+                          SizedBox(height: context.mediaQuery.height * 0.02),
                           Text(
                             postState.message,
                             style: Theme.of(context).textTheme.titleMedium,
                             textAlign: TextAlign.center,
                           ),
-                          const SizedBox(height: 16),
+                          SizedBox(height: context.mediaQuery.height * 0.02),
                           ElevatedButton(
                             onPressed: () {
                               context.read<PostCubit>().loadPosts();
@@ -190,31 +199,35 @@ class _HomeScreenState extends State<HomeScreen> {
   void _showPhotoOptions(BuildContext context) {
     showModalBottomSheet(
       context: context,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(context.mediaQuery.width * 0.05),
+        ),
       ),
       builder: (BuildContext context) {
         return Container(
-          padding: const EdgeInsets.all(20),
+          padding: EdgeInsets.all(context.mediaQuery.width * 0.05),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                width: 40,
-                height: 4,
+                width: context.mediaQuery.width * 0.1,
+                height: context.mediaQuery.height * 0.005,
                 decoration: BoxDecoration(
                   color: Colors.grey[300],
-                  borderRadius: BorderRadius.circular(2),
+                  borderRadius: BorderRadius.circular(
+                    context.mediaQuery.width * 0.005,
+                  ),
                 ),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: context.mediaQuery.height * 0.025),
               Text(
                 'Foto do Perfil',
                 style: Theme.of(
                   context,
                 ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
               ),
-              const SizedBox(height: 24),
+              SizedBox(height: context.mediaQuery.height * 0.03),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -256,7 +269,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: context.mediaQuery.height * 0.025),
             ],
           ),
         );
@@ -278,26 +291,37 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             Container(
-              width: 60,
-              height: 60,
+              width: context.mediaQuery.width * 0.15,
+              height: context.mediaQuery.width * 0.15,
               decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor.withOpacity(0.1),
-                borderRadius: BorderRadius.circular(30),
+                color: Theme.of(
+                  context,
+                ).primaryColor.withAlpha((0.1 * 255).round()),
+                borderRadius: BorderRadius.circular(
+                  context.mediaQuery.width * 0.075,
+                ),
               ),
               child: isLoading
-                  ? const Center(
+                  ? Center(
                       child: SizedBox(
-                        width: 30,
-                        height: 30,
-                        child: CircularProgressIndicator(strokeWidth: 2),
+                        width: context.mediaQuery.width * 0.075,
+                        height: context.mediaQuery.width * 0.075,
+                        child: const CircularProgressIndicator(strokeWidth: 2),
                       ),
                     )
-                  : Icon(icon, color: Theme.of(context).primaryColor, size: 30),
+                  : Icon(
+                      icon,
+                      color: Theme.of(context).primaryColor,
+                      size: context.mediaQuery.width * 0.075,
+                    ),
             ),
-            const SizedBox(height: 8),
+            SizedBox(height: context.mediaQuery.height * 0.01),
             Text(
               isLoading ? 'Processando...' : label,
-              style: TextStyle(fontSize: 12, color: Colors.grey[700]),
+              style: TextStyle(
+                fontSize: context.mediaQuery.width * 0.03,
+                color: Colors.grey[700],
+              ),
             ),
           ],
         ),
