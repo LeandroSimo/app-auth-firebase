@@ -31,10 +31,12 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<User?> createUserWithEmailAndPassword({
     required String email,
     required String password,
+    String? displayName,
   }) async {
     return await _firebaseAuthService.createUserWithEmailAndPassword(
       email: email,
       password: password,
+      displayName: displayName,
     );
   }
 

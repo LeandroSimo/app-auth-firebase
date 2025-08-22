@@ -14,6 +14,7 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   final _formKey = GlobalKey<FormState>();
+  final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
@@ -22,6 +23,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   void dispose() {
+    _nameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     _confirmPasswordController.dispose();
@@ -52,9 +54,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
               );
             } else if (state is AuthAuthenticated) {
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (_) => const HomeScreen()),
-              );
+              Navigator.of(
+                context,
+              ).pushNamedAndRemoveUntil(HomeScreen.routeName, (route) => false);
             }
           },
           builder: (context, state) {
@@ -77,6 +79,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ?.copyWith(fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 32),
+                    TextFormField(
+                      controller: _nameController,
+                      textCapitalization: TextCapitalization.words,
+                      decoration: const InputDecoration(
+                        labelText: 'Nome completo',
+                        prefixIcon: Icon(Icons.person_outlined),
+                        border: OutlineInputBorder(),
+                      ),
+                      validator: (value) {
+                        if (value == null || value.trim().isEmpty) {
+                          return 'Por favor, insira seu nome';
+                        }
+                        if (value.trim().length < 2) {
+                          return 'Nome deve ter pelo menos 2 caracteres';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 16),
                     TextFormField(
                       controller: _emailController,
                       keyboardType: TextInputType.emailAddress,
@@ -172,7 +193,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 width: 20,
                                 child: CircularProgressIndicator(
                                   strokeWidth: 2,
-                                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    Colors.white,
+                                  ),
                                 ),
                               )
                             : const Text('Criar Conta'),
@@ -180,9 +203,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                     const SizedBox(height: 16),
                     TextButton(
-                      onPressed: state is AuthLoading ? null : () {
-                        Navigator.of(context).pop();
-                      },
+                      onPressed: state is AuthLoading
+                          ? null
+                          : () {
+                              Navigator.of(context).pop();
+                            },
                       child: const Text('Já tem conta? Faça login'),
                     ),
                   ],
@@ -200,6 +225,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       context.read<AuthCubit>().createUserWithEmailAndPassword(
         email: _emailController.text.trim(),
         password: _passwordController.text,
+        displayName: _nameController.text.trim(),
       );
     }
   }

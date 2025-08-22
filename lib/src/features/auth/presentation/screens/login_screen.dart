@@ -49,9 +49,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               );
             } else if (state is AuthAuthenticated) {
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (_) => const HomeScreen()),
-              );
+              Navigator.of(
+                context,
+              ).pushNamedAndRemoveUntil(HomeScreen.routeName, (route) => false);
             }
           },
           builder: (context, state) {
@@ -137,7 +137,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                 width: 20,
                                 child: CircularProgressIndicator(
                                   strokeWidth: 2,
-                                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    Colors.white,
+                                  ),
                                 ),
                               )
                             : const Text('Entrar'),
@@ -145,13 +147,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     const SizedBox(height: 16),
                     TextButton(
-                      onPressed: state is AuthLoading ? null : () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (_) => const RegisterScreen(),
-                          ),
-                        );
-                      },
+                      onPressed: state is AuthLoading
+                          ? null
+                          : () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (_) => const RegisterScreen(),
+                                ),
+                              );
+                            },
                       child: const Text('Não tem conta? Cadastre-se'),
                     ),
                   ],

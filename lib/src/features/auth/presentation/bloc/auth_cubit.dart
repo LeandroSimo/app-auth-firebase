@@ -63,6 +63,7 @@ class AuthCubit extends Cubit<AuthState> {
   Future<void> createUserWithEmailAndPassword({
     required String email,
     required String password,
+    String? displayName,
   }) async {
     try {
       emit(AuthLoading());
@@ -70,6 +71,7 @@ class AuthCubit extends Cubit<AuthState> {
       final user = await _authRepository.createUserWithEmailAndPassword(
         email: email,
         password: password,
+        displayName: displayName,
       );
 
       if (user != null) {

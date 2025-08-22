@@ -81,6 +81,7 @@ class FirebaseAuthService {
   Future<domain.User?> createUserWithEmailAndPassword({
     required String email,
     required String password,
+    String? displayName,
   }) async {
     try {
       final credential = await _firebaseAuth.createUserWithEmailAndPassword(
@@ -90,11 +91,17 @@ class FirebaseAuthService {
 
       if (credential.user == null) return null;
 
+      // Atualiza o displayName se fornecido
+      if (displayName != null && displayName.trim().isNotEmpty) {
+        await credential.user!.updateDisplayName(displayName.trim());
+        await credential.user!.reload();
+      }
+
       final userModel = UserModel.fromFirebaseUser(credential.user!);
       return domain.User(
         uid: userModel.uid,
         email: userModel.email,
-        displayName: userModel.displayName,
+        displayName: displayName?.trim() ?? userModel.displayName,
         photoURL: userModel.photoURL,
       );
     } on firebase_auth.FirebaseAuthException catch (e) {
