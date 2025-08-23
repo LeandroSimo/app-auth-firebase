@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../home/presentation/screens/home_screen.dart';
 import '../bloc/auth_cubit.dart';
 import '../bloc/auth_state.dart';
-import 'register_screen.dart';
 import '../../../../core/validators/validation_mixin.dart';
+import '../../../../core/routes/app_routes.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String routeName = '/login';
@@ -134,11 +134,9 @@ class _LoginScreenState extends State<LoginScreen> with ValidationMixin {
                       onPressed: state is AuthLoading
                           ? null
                           : () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (_) => const RegisterScreen(),
-                                ),
-                              );
+                              Navigator.of(
+                                context,
+                              ).pushNamed(AppRoutes.register);
                             },
                       child: const Text('Não tem conta? Cadastre-se'),
                     ),

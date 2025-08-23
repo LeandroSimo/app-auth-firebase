@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../auth/presentation/bloc/auth_cubit.dart';
 import '../../../auth/presentation/bloc/auth_state.dart';
-import '../../../auth/presentation/screens/login_screen.dart';
 import '../../../posts/presentation/bloc/post_cubit.dart';
 import '../../../posts/presentation/bloc/post_state.dart';
 import '../../../posts/presentation/widgets/post_item.dart';
@@ -97,9 +96,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
       body: BlocListener<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is AuthUnauthenticated) {
-            Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (_) => const LoginScreen()),
-            );
+            Navigator.of(context).pushReplacementNamed(AppRoutes.login);
           }
         },
         child: BlocBuilder<AuthCubit, AuthState>(
