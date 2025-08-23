@@ -2,6 +2,7 @@ import 'package:app_test/src/core/utils/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import '../../data/domain/entities/post.dart';
+import '../../../../core/routes/app_routes.dart';
 
 class PostItem extends StatelessWidget {
   final Post post;
@@ -32,15 +33,24 @@ class PostItem extends StatelessWidget {
               child: Row(
                 children: [
                   // Avatar do usuário
-                  CircleAvatar(
-                    radius: context.mediaQuery.width * 0.05,
-                    backgroundImage: post.userAvatar.isNotEmpty
-                        ? NetworkImage(post.userAvatar)
-                        : null,
-                    backgroundColor: Colors.grey[300],
-                    child: post.userAvatar.isEmpty
-                        ? Icon(Icons.person, color: Colors.grey[600])
-                        : null,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        AppRoutes.profile,
+                        arguments: 'user_${post.id}', // Mock user ID
+                      );
+                    },
+                    child: CircleAvatar(
+                      radius: context.mediaQuery.width * 0.05,
+                      backgroundImage: post.userAvatar.isNotEmpty
+                          ? NetworkImage(post.userAvatar)
+                          : null,
+                      backgroundColor: Colors.grey[300],
+                      child: post.userAvatar.isEmpty
+                          ? Icon(Icons.person, color: Colors.grey[600])
+                          : null,
+                    ),
                   ),
                   SizedBox(width: context.mediaQuery.width * 0.03),
                   // Nome e tempo
@@ -48,10 +58,19 @@ class PostItem extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          post.userName,
-                          style: Theme.of(context).textTheme.titleSmall
-                              ?.copyWith(fontWeight: FontWeight.w600),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              AppRoutes.profile,
+                              arguments: 'user_${post.id}', // Mock user ID
+                            );
+                          },
+                          child: Text(
+                            post.userName,
+                            style: Theme.of(context).textTheme.titleSmall
+                                ?.copyWith(fontWeight: FontWeight.w600),
+                          ),
                         ),
                         Text(
                           post.timeAgo,
@@ -63,9 +82,7 @@ class PostItem extends StatelessWidget {
                   ),
                   // Menu de opções
                   IconButton(
-                    onPressed: () {
-                      // TODO: Implementar menu de opções
-                    },
+                    onPressed: () {},
                     icon: const Icon(Icons.more_vert),
                     iconSize: context.mediaQuery.width * 0.05,
                   ),
@@ -205,9 +222,7 @@ class PostItem extends StatelessWidget {
                 children: [
                   // Like
                   InkWell(
-                    onTap: () {
-                      // TODO: Implementar like
-                    },
+                    onTap: () {},
                     borderRadius: BorderRadius.circular(
                       context.mediaQuery.width * 0.05,
                     ),

@@ -4,6 +4,7 @@ import '../../features/auth/presentation/screens/login_screen.dart';
 import '../../features/auth/presentation/screens/register_screen.dart';
 import '../../features/home/presentation/screens/home_screen.dart';
 import '../../features/posts/presentation/screens/post_detail_screen.dart';
+import '../../features/profile/presentation/screens/profile_screen.dart';
 import '../widgets/splash_screen.dart';
 import 'app_routes.dart';
 
@@ -29,6 +30,9 @@ class RouterGenerator {
           builder: (_) =>
               Scaffold(body: Center(child: Text('Post ID is required'))),
         );
+      case AppRoutes.profile:
+        final userId = settings.arguments as String? ?? 'current_user';
+        return MaterialPageRoute(builder: (_) => ProfileScreen(userId: userId));
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
