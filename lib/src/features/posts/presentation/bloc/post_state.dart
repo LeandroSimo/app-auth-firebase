@@ -16,27 +16,31 @@ class PostLoaded extends PostState {
   final List<Post> posts;
   final bool hasReachedMax;
   final int currentPage;
+  final bool isLoadingMore;
 
   const PostLoaded({
     required this.posts,
     this.hasReachedMax = false,
     this.currentPage = 1,
+    this.isLoadingMore = false,
   });
 
   PostLoaded copyWith({
     List<Post>? posts,
     bool? hasReachedMax,
     int? currentPage,
+    bool? isLoadingMore,
   }) {
     return PostLoaded(
       posts: posts ?? this.posts,
       hasReachedMax: hasReachedMax ?? this.hasReachedMax,
       currentPage: currentPage ?? this.currentPage,
+      isLoadingMore: isLoadingMore ?? this.isLoadingMore,
     );
   }
 
   @override
-  List<Object?> get props => [posts, hasReachedMax, currentPage];
+  List<Object?> get props => [posts, hasReachedMax, currentPage, isLoadingMore];
 }
 
 class PostError extends PostState {
@@ -64,9 +68,6 @@ class PostDetailLoaded extends PostDetailState {
   final Post post;
 
   const PostDetailLoaded({required this.post});
-
-  @override
-  List<Object?> get props => [post];
 }
 
 class PostDetailError extends PostDetailState {

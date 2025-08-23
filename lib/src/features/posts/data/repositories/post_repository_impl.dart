@@ -17,17 +17,16 @@ class PostRepositoryImpl implements PostRepository {
           .map(
             (model) => Post(
               id: model.id,
-              slug: model.slug,
-              url: model.url,
               title: model.title,
-              content: model.content,
-              image: model.image,
-              thumbnail: model.thumbnail,
-              status: model.status,
-              category: model.category,
-              publishedAt: model.publishedAt,
-              updatedAt: model.updatedAt,
+              body: model.body,
               userId: model.userId,
+              userName: model.userName,
+              userAvatar: model.userAvatar,
+              image: model.image,
+              likes: model.likes,
+              comments: model.comments,
+              createdAt: model.createdAt,
+              tags: model.tags,
             ),
           )
           .toList();
@@ -45,17 +44,16 @@ class PostRepositoryImpl implements PostRepository {
 
       return Post(
         id: postModel.id,
-        slug: postModel.slug,
-        url: postModel.url,
         title: postModel.title,
-        content: postModel.content,
-        image: postModel.image,
-        thumbnail: postModel.thumbnail,
-        status: postModel.status,
-        category: postModel.category,
-        publishedAt: postModel.publishedAt,
-        updatedAt: postModel.updatedAt,
+        body: postModel.body,
         userId: postModel.userId,
+        userName: postModel.userName,
+        userAvatar: postModel.userAvatar,
+        image: postModel.image,
+        likes: postModel.likes,
+        comments: postModel.comments,
+        createdAt: postModel.createdAt,
+        tags: postModel.tags,
       );
     } catch (e) {
       rethrow;

@@ -2,77 +2,82 @@ import 'package:equatable/equatable.dart';
 
 class Post extends Equatable {
   final int id;
-  final String slug;
-  final String url;
   final String title;
-  final String content;
-  final String image;
-  final String thumbnail;
-  final String status;
-  final String category;
-  final String publishedAt;
-  final String updatedAt;
+  final String body;
   final int userId;
+  final String userName;
+  final String userAvatar;
+  final String image;
+  final int likes;
+  final int comments;
+  final String createdAt;
+  final List<String> tags;
 
   const Post({
     required this.id,
-    required this.slug,
-    required this.url,
     required this.title,
-    required this.content,
-    required this.image,
-    required this.thumbnail,
-    required this.status,
-    required this.category,
-    required this.publishedAt,
-    required this.updatedAt,
+    required this.body,
     required this.userId,
+    required this.userName,
+    required this.userAvatar,
+    required this.image,
+    required this.likes,
+    required this.comments,
+    required this.createdAt,
+    required this.tags,
   });
 
-  // Método para obter um resumo do conteúdo
+  DateTime get createdAtDateTime {
+    try {
+      return DateTime.parse(createdAt);
+    } catch (e) {
+      return DateTime.now();
+    }
+  }
+
+  String get timeAgo {
+    final now = DateTime.now();
+    final difference = now.difference(createdAtDateTime);
+
+    if (difference.inDays > 7) {
+      return '${(difference.inDays / 7).floor()}sem';
+    } else if (difference.inDays > 0) {
+      return '${difference.inDays}d';
+    } else if (difference.inHours > 0) {
+      return '${difference.inHours}h';
+    } else if (difference.inMinutes > 0) {
+      return '${difference.inMinutes}min';
+    } else {
+      return 'agora';
+    }
+  }
+
+  // Método para obter um resumo do conteúdo limitado a 100 caracteres
   String get contentSummary {
-    if (content.length <= 100) return content;
-    return '${content.substring(0, 100)}...';
+    if (body.length <= 100) return body;
+    return '${body.substring(0, 100)}...';
   }
 
   // Método para verificar se o conteúdo foi truncado
-  bool get isContentTruncated => content.length > 100;
-
-  // Método para formatar a data de publicação
-  String get formattedPublishDate {
-    try {
-      // Assuming the date format is DD/MM/YYYY HH:mm:ss
-      final parts = publishedAt.split(' ');
-      if (parts.length >= 2) {
-        final dateParts = parts[0].split('/');
-        if (dateParts.length == 3) {
-          return '${dateParts[0]}/${dateParts[1]}/${dateParts[2]}';
-        }
-      }
-      return publishedAt;
-    } catch (e) {
-      return publishedAt;
-    }
-  }
+  bool get isContentTruncated => body.length > 100;
 
   @override
   List<Object?> get props => [
     id,
-    slug,
-    url,
     title,
-    content,
-    image,
-    thumbnail,
-    status,
-    category,
-    publishedAt,
-    updatedAt,
+    body,
     userId,
+    userName,
+    userAvatar,
+    image,
+    likes,
+    comments,
+    createdAt,
+    tags,
   ];
 
   @override
   String toString() {
-    return 'Post(id: $id, title: $title, userId: $userId)';
+    return 'Post(id: $id, title: $title, userId: $userId, userName: $userName)';
   }
 }

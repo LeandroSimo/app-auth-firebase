@@ -1,0 +1,1704 @@
+{
+    "posts": [
+        {
+            "id": 1,
+            "title": "Descobrindo o Flutter",
+            "body": "Hoje comecei a estudar Flutter e estou impressionado com a facilidade de criar aplicativos multiplataforma. A documentação é excelente!",
+            "userId": 1,
+            "userName": "Ana Silva",
+            "userAvatar": "https://i.pravatar.cc/200?img=1",
+            "image": "https://picsum.photos/400/300?random=1",
+            "likes": 24,
+            "comments": 5,
+            "createdAt": "2025-08-20T10:30:00Z",
+            "tags": [
+                "flutter",
+                "mobile",
+                "desenvolvimento"
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Receita de Brigadeiro Gourmet",
+            "body": "Compartilho aqui minha receita especial de brigadeiro gourmet com chocolate belga. O segredo está na temperatura!",
+            "userId": 2,
+            "userName": "Carlos Mendes",
+            "userAvatar": "https://i.pravatar.cc/200?img=2",
+            "image": "https://picsum.photos/400/300?random=2",
+            "likes": 156,
+            "comments": 23,
+            "createdAt": "2025-08-19T14:15:00Z",
+            "tags": [
+                "culinária",
+                "doces",
+                "receitas"
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Viagem para as Montanhas",
+            "body": "Que experiência incrível! Três dias nas montanhas me renovaram completamente. A natureza é realmente terapêutica.",
+            "userId": 3,
+            "userName": "Mariana Costa",
+            "userAvatar": "https://i.pravatar.cc/200?img=3",
+            "image": "https://picsum.photos/400/300?random=3",
+            "likes": 89,
+            "comments": 12,
+            "createdAt": "2025-08-18T08:45:00Z",
+            "tags": [
+                "viagem",
+                "natureza",
+                "montanhas"
+            ]
+        },
+        {
+            "id": 4,
+            "title": "Novo Projeto em React Native",
+            "body": "Acabei de finalizar um aplicativo de delivery usando React Native. Performance excelente e UI responsiva!",
+            "userId": 4,
+            "userName": "Pedro Santos",
+            "userAvatar": "https://i.pravatar.cc/200?img=4",
+            "image": "https://picsum.photos/400/300?random=4",
+            "likes": 67,
+            "comments": 8,
+            "createdAt": "2025-08-17T16:20:00Z",
+            "tags": [
+                "react-native",
+                "desenvolvimento",
+                "mobile"
+            ]
+        },
+        {
+            "id": 5,
+            "title": "Treino de Crossfit Intenso",
+            "body": "Hoje foi dia de WOD pesado! 100 burpees, 150 squats e muito suor. Resultados chegando aos poucos.",
+            "userId": 5,
+            "userName": "Juliana Oliveira",
+            "userAvatar": "https://i.pravatar.cc/200?img=5",
+            "image": "https://picsum.photos/400/300?random=5",
+            "likes": 43,
+            "comments": 7,
+            "createdAt": "2025-08-16T19:00:00Z",
+            "tags": [
+                "fitness",
+                "crossfit",
+                "treino"
+            ]
+        },
+        {
+            "id": 6,
+            "title": "Arte Digital com Procreate",
+            "body": "Minha mais nova criação digital! Procreate está revolucionando a forma como eu crio. Processo completo no stories!",
+            "userId": 6,
+            "userName": "Rafael Lima",
+            "userAvatar": "https://i.pravatar.cc/200?img=6",
+            "image": "https://picsum.photos/400/300?random=6",
+            "likes": 234,
+            "comments": 31,
+            "createdAt": "2025-08-15T11:30:00Z",
+            "tags": [
+                "arte",
+                "digital",
+                "procreate"
+            ]
+        },
+        {
+            "id": 7,
+            "title": "Jardim de Suculentas",
+            "body": "Meu cantinho verde está ficando lindo! Suculentas são perfeitas para quem está começando na jardinagem.",
+            "userId": 7,
+            "userName": "Camila Rodrigues",
+            "userAvatar": "https://i.pravatar.cc/200?img=7",
+            "image": "https://picsum.photos/400/300?random=7",
+            "likes": 78,
+            "comments": 15,
+            "createdAt": "2025-08-14T09:15:00Z",
+            "tags": [
+                "jardinagem",
+                "plantas",
+                "suculentas"
+            ]
+        },
+        {
+            "id": 8,
+            "title": "Análise de Dados com Python",
+            "body": "Finalizei um projeto de análise de vendas usando pandas e matplotlib. Os insights foram surpreendentes!",
+            "userId": 8,
+            "userName": "Bruno Ferreira",
+            "userAvatar": "https://i.pravatar.cc/200?img=8",
+            "image": "https://picsum.photos/400/300?random=8",
+            "likes": 92,
+            "comments": 18,
+            "createdAt": "2025-08-13T13:45:00Z",
+            "tags": [
+                "python",
+                "dados",
+                "análise"
+            ]
+        },
+        {
+            "id": 9,
+            "title": "Show do Coldplay",
+            "body": "Que noite inesquecível! O show do Coldplay superou todas as expectativas. A energia do público era contagiante!",
+            "userId": 9,
+            "userName": "Fernanda Alves",
+            "userAvatar": "https://i.pravatar.cc/200?img=9",
+            "image": "https://picsum.photos/400/300?random=9",
+            "likes": 187,
+            "comments": 42,
+            "createdAt": "2025-08-12T22:30:00Z",
+            "tags": [
+                "música",
+                "show",
+                "coldplay"
+            ]
+        },
+        {
+            "id": 10,
+            "title": "Café da Manhã Saudável",
+            "body": "Começar o dia com energia! Bowl de açaí com granola caseira, frutas frescas e muito amor próprio.",
+            "userId": 10,
+            "userName": "Lucas Barbosa",
+            "userAvatar": "https://i.pravatar.cc/200?img=10",
+            "image": "https://picsum.photos/400/300?random=10",
+            "likes": 126,
+            "comments": 9,
+            "createdAt": "2025-08-11T07:00:00Z",
+            "tags": [
+                "alimentação",
+                "saudável",
+                "café-da-manhã"
+            ]
+        },
+        {
+            "id": 11,
+            "title": "Fotografia Street Art",
+            "body": "Explorando a cidade em busca da melhor street art. Cada muro conta uma história única e poderosa.",
+            "userId": 1,
+            "userName": "Ana Silva",
+            "userAvatar": "https://i.pravatar.cc/200?img=1",
+            "image": "https://picsum.photos/400/300?random=11",
+            "likes": 145,
+            "comments": 22,
+            "createdAt": "2025-08-10T15:20:00Z",
+            "tags": [
+                "fotografia",
+                "arte",
+                "urbano"
+            ]
+        },
+        {
+            "id": 12,
+            "title": "Workshop de UX Design",
+            "body": "Participei de um workshop incrível sobre design centrado no usuário. Aprendi técnicas valiosas para melhorar a experiência.",
+            "userId": 2,
+            "userName": "Carlos Mendes",
+            "userAvatar": "https://i.pravatar.cc/200?img=2",
+            "image": "https://picsum.photos/400/300?random=12",
+            "likes": 73,
+            "comments": 14,
+            "createdAt": "2025-08-09T10:45:00Z",
+            "tags": [
+                "ux",
+                "design",
+                "workshop"
+            ]
+        },
+        {
+            "id": 13,
+            "title": "Leitura: Sapiens",
+            "body": "Terminei de ler Sapiens do Yuval Harari. Um livro que muda completamente nossa perspectiva sobre a humanidade.",
+            "userId": 3,
+            "userName": "Mariana Costa",
+            "userAvatar": "https://i.pravatar.cc/200?img=3",
+            "image": "https://picsum.photos/400/300?random=13",
+            "likes": 98,
+            "comments": 27,
+            "createdAt": "2025-08-08T20:15:00Z",
+            "tags": [
+                "livros",
+                "história",
+                "conhecimento"
+            ]
+        },
+        {
+            "id": 14,
+            "title": "Drone Photography",
+            "body": "Capturei algumas imagens aéreas incríveis hoje! A perspectiva de cima sempre revela detalhes únicos da paisagem.",
+            "userId": 4,
+            "userName": "Pedro Santos",
+            "userAvatar": "https://i.pravatar.cc/200?img=4",
+            "image": "https://picsum.photos/400/300?random=14",
+            "likes": 156,
+            "comments": 19,
+            "createdAt": "2025-08-07T16:30:00Z",
+            "tags": [
+                "drone",
+                "fotografia",
+                "aérea"
+            ]
+        },
+        {
+            "id": 15,
+            "title": "Meditação Matinal",
+            "body": "15 minutos de meditação todas as manhãs têm transformado meu dia. Clareza mental e paz interior são fundamentais.",
+            "userId": 5,
+            "userName": "Juliana Oliveira",
+            "userAvatar": "https://i.pravatar.cc/200?img=5",
+            "image": "https://picsum.photos/400/300?random=15",
+            "likes": 84,
+            "comments": 13,
+            "createdAt": "2025-08-06T06:30:00Z",
+            "tags": [
+                "meditação",
+                "bem-estar",
+                "mindfulness"
+            ]
+        },
+        {
+            "id": 16,
+            "title": "Curso de Machine Learning",
+            "body": "Concluí meu primeiro projeto de ML! Criei um modelo de classificação de imagens com 95% de acurácia.",
+            "userId": 6,
+            "userName": "Rafael Lima",
+            "userAvatar": "https://i.pravatar.cc/200?img=6",
+            "image": "https://picsum.photos/400/300?random=16",
+            "likes": 112,
+            "comments": 21,
+            "createdAt": "2025-08-05T14:00:00Z",
+            "tags": [
+                "machine-learning",
+                "ia",
+                "tecnologia"
+            ]
+        },
+        {
+            "id": 17,
+            "title": "Festival de Cinema",
+            "body": "Que festival incrível! Assisti a 12 filmes em 3 dias. O cinema independente nacional está em alta!",
+            "userId": 7,
+            "userName": "Camila Rodrigues",
+            "userAvatar": "https://i.pravatar.cc/200?img=7",
+            "image": "https://picsum.photos/400/300?random=17",
+            "likes": 67,
+            "comments": 16,
+            "createdAt": "2025-08-04T21:45:00Z",
+            "tags": [
+                "cinema",
+                "festival",
+                "cultura"
+            ]
+        },
+        {
+            "id": 18,
+            "title": "Startup Weekend",
+            "body": "54 horas de pura inovação! Nossa ideia de app sustentável ficou em segundo lugar. Experiência transformadora!",
+            "userId": 8,
+            "userName": "Bruno Ferreira",
+            "userAvatar": "https://i.pravatar.cc/200?img=8",
+            "image": "https://picsum.photos/400/300?random=18",
+            "likes": 189,
+            "comments": 34,
+            "createdAt": "2025-08-03T18:20:00Z",
+            "tags": [
+                "startup",
+                "inovação",
+                "empreendedorismo"
+            ]
+        },
+        {
+            "id": 19,
+            "title": "Trilha na Chapada",
+            "body": "8km de trilha e uma cachoeira deslumbrante no final! A Chapada Diamantina nunca deixa de me surpreender.",
+            "userId": 9,
+            "userName": "Fernanda Alves",
+            "userAvatar": "https://i.pravatar.cc/200?img=9",
+            "image": "https://picsum.photos/400/300?random=19",
+            "likes": 203,
+            "comments": 28,
+            "createdAt": "2025-08-02T12:10:00Z",
+            "tags": [
+                "trilha",
+                "natureza",
+                "aventura"
+            ]
+        },
+        {
+            "id": 20,
+            "title": "Projeto Open Source",
+            "body": "Lancei meu primeiro projeto open source no GitHub! Uma biblioteca para validação de formulários em Flutter.",
+            "userId": 10,
+            "userName": "Lucas Barbosa",
+            "userAvatar": "https://i.pravatar.cc/200?img=10",
+            "image": "https://picsum.photos/400/300?random=20",
+            "likes": 145,
+            "comments": 37,
+            "createdAt": "2025-08-01T09:30:00Z",
+            "tags": [
+                "open-source",
+                "flutter",
+                "github"
+            ]
+        },
+        {
+            "id": 21,
+            "title": "Aula de Yoga Online",
+            "body": "Primeira aula de yoga pela manhã! A flexibilidade está melhorando e a sensação de bem-estar é indescritível.",
+            "userId": 1,
+            "userName": "Ana Silva",
+            "userAvatar": "https://i.pravatar.cc/200?img=1",
+            "image": "https://picsum.photos/400/300?random=21",
+            "likes": 76,
+            "comments": 11,
+            "createdAt": "2025-07-31T06:45:00Z",
+            "tags": [
+                "yoga",
+                "bem-estar",
+                "saúde"
+            ]
+        },
+        {
+            "id": 22,
+            "title": "Receita de Lasanha Vegana",
+            "body": "Experimentei uma lasanha vegana com queijo de castanha. O resultado surpreendeu até os carnívoros da família!",
+            "userId": 2,
+            "userName": "Carlos Mendes",
+            "userAvatar": "https://i.pravatar.cc/200?img=2",
+            "image": "https://picsum.photos/400/300?random=22",
+            "likes": 198,
+            "comments": 45,
+            "createdAt": "2025-07-30T17:20:00Z",
+            "tags": [
+                "vegano",
+                "culinária",
+                "sustentável"
+            ]
+        },
+        {
+            "id": 23,
+            "title": "Escalada em Rocha",
+            "body": "Desafiei meus limites hoje! Primeira escalada em rocha natural. Adrenalina e superação em cada movimento.",
+            "userId": 3,
+            "userName": "Mariana Costa",
+            "userAvatar": "https://i.pravatar.cc/200?img=3",
+            "image": "https://picsum.photos/400/300?random=23",
+            "likes": 134,
+            "comments": 18,
+            "createdAt": "2025-07-29T14:30:00Z",
+            "tags": [
+                "escalada",
+                "aventura",
+                "desafio"
+            ]
+        },
+        {
+            "id": 24,
+            "title": "App de Realidade Aumentada",
+            "body": "Finalizei um protótipo de AR para visualização de móveis! Flutter com ARCore funcionando perfeitamente.",
+            "userId": 4,
+            "userName": "Pedro Santos",
+            "userAvatar": "https://i.pravatar.cc/200?img=4",
+            "image": "https://picsum.photos/400/300?random=24",
+            "likes": 241,
+            "comments": 52,
+            "createdAt": "2025-07-28T11:15:00Z",
+            "tags": [
+                "ar",
+                "flutter",
+                "inovação"
+            ]
+        },
+        {
+            "id": 25,
+            "title": "Maratona de 21K",
+            "body": "Concluí minha primeira meia maratona! 2h15min de muito suor, mas a sensação de conquista é incomparável.",
+            "userId": 5,
+            "userName": "Juliana Oliveira",
+            "userAvatar": "https://i.pravatar.cc/200?img=5",
+            "image": "https://picsum.photos/400/300?random=25",
+            "likes": 287,
+            "comments": 63,
+            "createdAt": "2025-07-27T08:00:00Z",
+            "tags": [
+                "corrida",
+                "maratona",
+                "conquista"
+            ]
+        },
+        {
+            "id": 26,
+            "title": "Ilustração de Personagem",
+            "body": "Nova série de personagens para um jogo indie! Cada traço conta uma história única e carrega personalidade.",
+            "userId": 6,
+            "userName": "Rafael Lima",
+            "userAvatar": "https://i.pravatar.cc/200?img=6",
+            "image": "https://picsum.photos/400/300?random=26",
+            "likes": 456,
+            "comments": 78,
+            "createdAt": "2025-07-26T16:40:00Z",
+            "tags": [
+                "ilustração",
+                "personagem",
+                "games"
+            ]
+        },
+        {
+            "id": 27,
+            "title": "Horta Urbana",
+            "body": "Minha horta no apartamento está dando frutos! Tomates cereja, manjericão e alecrim fresquinhos na mesa.",
+            "userId": 7,
+            "userName": "Camila Rodrigues",
+            "userAvatar": "https://i.pravatar.cc/200?img=7",
+            "image": "https://picsum.photos/400/300?random=27",
+            "likes": 165,
+            "comments": 29,
+            "createdAt": "2025-07-25T10:20:00Z",
+            "tags": [
+                "horta",
+                "urbana",
+                "sustentabilidade"
+            ]
+        },
+        {
+            "id": 28,
+            "title": "Dashboard com Power BI",
+            "body": "Criei um dashboard interativo para análise de vendas. As visualizações estão ajudando muito na tomada de decisões!",
+            "userId": 8,
+            "userName": "Bruno Ferreira",
+            "userAvatar": "https://i.pravatar.cc/200?img=8",
+            "image": "https://picsum.photos/400/300?random=28",
+            "likes": 123,
+            "comments": 25,
+            "createdAt": "2025-07-24T13:55:00Z",
+            "tags": [
+                "powerbi",
+                "dashboard",
+                "analytics"
+            ]
+        },
+        {
+            "id": 29,
+            "title": "Festival de Jazz",
+            "body": "Noite mágica no festival de jazz! A improvisação dos músicos criou momentos únicos e emocionantes.",
+            "userId": 9,
+            "userName": "Fernanda Alves",
+            "userAvatar": "https://i.pravatar.cc/200?img=9",
+            "image": "https://picsum.photos/400/300?random=29",
+            "likes": 198,
+            "comments": 34,
+            "createdAt": "2025-07-23T21:30:00Z",
+            "tags": [
+                "jazz",
+                "música",
+                "festival"
+            ]
+        },
+        {
+            "id": 30,
+            "title": "Smoothie Detox",
+            "body": "Receita perfeita para segunda-feira: couve, maçã, gengibre e limão. Energia renovada para a semana!",
+            "userId": 10,
+            "userName": "Lucas Barbosa",
+            "userAvatar": "https://i.pravatar.cc/200?img=10",
+            "image": "https://picsum.photos/400/300?random=30",
+            "likes": 145,
+            "comments": 22,
+            "createdAt": "2025-07-22T07:15:00Z",
+            "tags": [
+                "detox",
+                "smoothie",
+                "saúde"
+            ]
+        },
+        {
+            "id": 31,
+            "title": "Curso de TypeScript",
+            "body": "Mergulhando no mundo TypeScript! A tipagem estática está mudando completamente minha forma de programar.",
+            "userId": 1,
+            "userName": "Ana Silva",
+            "userAvatar": "https://i.pravatar.cc/200?img=1",
+            "image": "https://picsum.photos/400/300?random=31",
+            "likes": 189,
+            "comments": 41,
+            "createdAt": "2025-07-21T15:30:00Z",
+            "tags": [
+                "typescript",
+                "programação",
+                "estudo"
+            ]
+        },
+        {
+            "id": 32,
+            "title": "Pão Artesanal Fermentação Natural",
+            "body": "Depois de 5 dias cuidando da massa madre, finalmente meu primeiro pão! O sabor e textura são únicos.",
+            "userId": 2,
+            "userName": "Carlos Mendes",
+            "userAvatar": "https://i.pravatar.cc/200?img=2",
+            "image": "https://picsum.photos/400/300?random=32",
+            "likes": 267,
+            "comments": 58,
+            "createdAt": "2025-07-20T12:45:00Z",
+            "tags": [
+                "pão",
+                "artesanal",
+                "fermentação"
+            ]
+        },
+        {
+            "id": 33,
+            "title": "Acampamento na Floresta",
+            "body": "Três dias desconectado na floresta. Fogueira, estrelas e o som da natureza como trilha sonora perfeita.",
+            "userId": 3,
+            "userName": "Mariana Costa",
+            "userAvatar": "https://i.pravatar.cc/200?img=3",
+            "image": "https://picsum.photos/400/300?random=33",
+            "likes": 234,
+            "comments": 47,
+            "createdAt": "2025-07-19T19:20:00Z",
+            "tags": [
+                "camping",
+                "natureza",
+                "desconexão"
+            ]
+        },
+        {
+            "id": 34,
+            "title": "API REST com Node.js",
+            "body": "Desenvolvi uma API completa com autenticação JWT e MongoDB. Documentação no Swagger incluída!",
+            "userId": 4,
+            "userName": "Pedro Santos",
+            "userAvatar": "https://i.pravatar.cc/200?img=4",
+            "image": "https://picsum.photos/400/300?random=34",
+            "likes": 176,
+            "comments": 33,
+            "createdAt": "2025-07-18T14:10:00Z",
+            "tags": [
+                "nodejs",
+                "api",
+                "backend"
+            ]
+        },
+        {
+            "id": 35,
+            "title": "Treino Funcional",
+            "body": "Mudei para treino funcional e estou amando! Movimentos mais naturais e maior consciência corporal.",
+            "userId": 5,
+            "userName": "Juliana Oliveira",
+            "userAvatar": "https://i.pravatar.cc/200?img=5",
+            "image": "https://picsum.photos/400/300?random=35",
+            "likes": 156,
+            "comments": 28,
+            "createdAt": "2025-07-17T18:45:00Z",
+            "tags": [
+                "funcional",
+                "treino",
+                "movimento"
+            ]
+        },
+        {
+            "id": 36,
+            "title": "Animação 2D",
+            "body": "Primeiro teste de animação 2D no After Effects! O personagem ganhou vida e o resultado ficou incrível.",
+            "userId": 6,
+            "userName": "Rafael Lima",
+            "userAvatar": "https://i.pravatar.cc/200?img=6",
+            "image": "https://picsum.photos/400/300?random=36",
+            "likes": 298,
+            "comments": 67,
+            "createdAt": "2025-07-16T11:25:00Z",
+            "tags": [
+                "animação",
+                "2d",
+                "motion"
+            ]
+        },
+        {
+            "id": 37,
+            "title": "Jardim Vertical",
+            "body": "Instalei um jardim vertical na varanda! Samambaias, jibóias e violetas criaram um ambiente incrível.",
+            "userId": 7,
+            "userName": "Camila Rodrigues",
+            "userAvatar": "https://i.pravatar.cc/200?img=7",
+            "image": "https://picsum.photos/400/300?random=37",
+            "likes": 189,
+            "comments": 35,
+            "createdAt": "2025-07-15T09:40:00Z",
+            "tags": [
+                "jardim",
+                "vertical",
+                "decoração"
+            ]
+        },
+        {
+            "id": 38,
+            "title": "Machine Learning com TensorFlow",
+            "body": "Treinei meu primeiro modelo de reconhecimento de imagens! 97% de acurácia na classificação de animais.",
+            "userId": 8,
+            "userName": "Bruno Ferreira",
+            "userAvatar": "https://i.pravatar.cc/200?img=8",
+            "image": "https://picsum.photos/400/300?random=38",
+            "likes": 234,
+            "comments": 56,
+            "createdAt": "2025-07-14T16:15:00Z",
+            "tags": [
+                "tensorflow",
+                "ml",
+                "ia"
+            ]
+        },
+        {
+            "id": 39,
+            "title": "Concerto de Piano",
+            "body": "Noite emocionante no concerto de piano clássico! Chopin e Debussy tocaram minha alma profundamente.",
+            "userId": 9,
+            "userName": "Fernanda Alves",
+            "userAvatar": "https://i.pravatar.cc/200?img=9",
+            "image": "https://picsum.photos/400/300?random=39",
+            "likes": 145,
+            "comments": 23,
+            "createdAt": "2025-07-13T20:30:00Z",
+            "tags": [
+                "piano",
+                "clássica",
+                "concerto"
+            ]
+        },
+        {
+            "id": 40,
+            "title": "Jejum Intermitente",
+            "body": "Terceira semana de jejum intermitente 16:8. Mais energia, melhor digestão e clareza mental aumentada!",
+            "userId": 10,
+            "userName": "Lucas Barbosa",
+            "userAvatar": "https://i.pravatar.cc/200?img=10",
+            "image": "https://picsum.photos/400/300?random=40",
+            "likes": 167,
+            "comments": 31,
+            "createdAt": "2025-07-12T08:20:00Z",
+            "tags": [
+                "jejum",
+                "saúde",
+                "bem-estar"
+            ]
+        },
+        {
+            "id": 41,
+            "title": "Extensão para VS Code",
+            "body": "Publiquei minha primeira extensão para VS Code! Uma ferramenta para snippets de Flutter personalizados.",
+            "userId": 1,
+            "userName": "Ana Silva",
+            "userAvatar": "https://i.pravatar.cc/200?img=1",
+            "image": "https://picsum.photos/400/300?random=41",
+            "likes": 312,
+            "comments": 89,
+            "createdAt": "2025-07-11T13:50:00Z",
+            "tags": [
+                "vscode",
+                "extensão",
+                "flutter"
+            ]
+        },
+        {
+            "id": 42,
+            "title": "Cozinha Molecular",
+            "body": "Experimentando técnicas de gastronomia molecular! Esferas de manga que explodem na boca são fascinantes.",
+            "userId": 2,
+            "userName": "Carlos Mendes",
+            "userAvatar": "https://i.pravatar.cc/200?img=2",
+            "image": "https://picsum.photos/400/300?random=42",
+            "likes": 278,
+            "comments": 64,
+            "createdAt": "2025-07-10T19:35:00Z",
+            "tags": [
+                "molecular",
+                "gastronomia",
+                "inovação"
+            ]
+        },
+        {
+            "id": 43,
+            "title": "Mergulho com Cilindro",
+            "body": "Primeira experiência de mergulho com cilindro! 15 metros de profundidade e um mundo subaquático incrível.",
+            "userId": 3,
+            "userName": "Mariana Costa",
+            "userAvatar": "https://i.pravatar.cc/200?img=3",
+            "image": "https://picsum.photos/400/300?random=43",
+            "likes": 201,
+            "comments": 38,
+            "createdAt": "2025-07-09T10:15:00Z",
+            "tags": [
+                "mergulho",
+                "mar",
+                "aventura"
+            ]
+        },
+        {
+            "id": 44,
+            "title": "Aplicativo de Finanças",
+            "body": "Desenvolvi um app de controle financeiro pessoal. Gráficos interativos e sincronização em nuvem funcionando!",
+            "userId": 4,
+            "userName": "Pedro Santos",
+            "userAvatar": "https://i.pravatar.cc/200?img=4",
+            "image": "https://picsum.photos/400/300?random=44",
+            "likes": 189,
+            "comments": 42,
+            "createdAt": "2025-07-08T15:40:00Z",
+            "tags": [
+                "finanças",
+                "app",
+                "controle"
+            ]
+        },
+        {
+            "id": 45,
+            "title": "Aula de Dança",
+            "body": "Primeira aula de dança contemporânea! Expressão corporal e liberdade de movimento são transformadores.",
+            "userId": 5,
+            "userName": "Juliana Oliveira",
+            "userAvatar": "https://i.pravatar.cc/200?img=5",
+            "image": "https://picsum.photos/400/300?random=45",
+            "likes": 134,
+            "comments": 27,
+            "createdAt": "2025-07-07T17:25:00Z",
+            "tags": [
+                "dança",
+                "contemporânea",
+                "expressão"
+            ]
+        },
+        {
+            "id": 46,
+            "title": "Logo Design",
+            "body": "Criei a identidade visual de uma startup de tecnologia! Minimalismo e modernidade em cada traço.",
+            "userId": 6,
+            "userName": "Rafael Lima",
+            "userAvatar": "https://i.pravatar.cc/200?img=6",
+            "image": "https://picsum.photos/400/300?random=46",
+            "likes": 245,
+            "comments": 51,
+            "createdAt": "2025-07-06T12:10:00Z",
+            "tags": [
+                "logo",
+                "design",
+                "identidade"
+            ]
+        },
+        {
+            "id": 47,
+            "title": "Composteira Doméstica",
+            "body": "Montei uma composteira em casa! Restos orgânicos virando adubo natural para as plantas. Sustentabilidade total!",
+            "userId": 7,
+            "userName": "Camila Rodrigues",
+            "userAvatar": "https://i.pravatar.cc/200?img=7",
+            "image": "https://picsum.photos/400/300?random=47",
+            "likes": 198,
+            "comments": 43,
+            "createdAt": "2025-07-05T14:55:00Z",
+            "tags": [
+                "composteira",
+                "sustentabilidade",
+                "reciclagem"
+            ]
+        },
+        {
+            "id": 48,
+            "title": "Automação com Python",
+            "body": "Automatizei meu fluxo de trabalho com Python! Scripts que economizam 3 horas diárias de tarefas repetitivas.",
+            "userId": 8,
+            "userName": "Bruno Ferreira",
+            "userAvatar": "https://i.pravatar.cc/200?img=8",
+            "image": "https://picsum.photos/400/300?random=48",
+            "likes": 267,
+            "comments": 58,
+            "createdAt": "2025-07-04T11:30:00Z",
+            "tags": [
+                "automação",
+                "python",
+                "produtividade"
+            ]
+        },
+        {
+            "id": 49,
+            "title": "Podcast sobre Indie Music",
+            "body": "Lancei um podcast dedicado à música independente! Entrevistas exclusivas com artistas emergentes.",
+            "userId": 9,
+            "userName": "Fernanda Alves",
+            "userAvatar": "https://i.pravatar.cc/200?img=9",
+            "image": "https://picsum.photos/400/300?random=49",
+            "likes": 189,
+            "comments": 35,
+            "createdAt": "2025-07-03T16:45:00Z",
+            "tags": [
+                "podcast",
+                "indie",
+                "música"
+            ]
+        },
+        {
+            "id": 50,
+            "title": "Alimentação Intuitiva",
+            "body": "Descobrindo a alimentação intuitiva! Ouvir o corpo e suas necessidades está transformando minha relação com a comida.",
+            "userId": 10,
+            "userName": "Lucas Barbosa",
+            "userAvatar": "https://i.pravatar.cc/200?img=10",
+            "image": "https://picsum.photos/400/300?random=50",
+            "likes": 156,
+            "comments": 29,
+            "createdAt": "2025-07-02T09:20:00Z",
+            "tags": [
+                "alimentação",
+                "intuitiva",
+                "consciência"
+            ]
+        },
+        {
+            "id": 51,
+            "title": "Curso de Blockchain",
+            "body": "Mergulhando no mundo blockchain! Smart contracts e DeFi abrem possibilidades infinitas para o futuro.",
+            "userId": 1,
+            "userName": "Ana Silva",
+            "userAvatar": "https://i.pravatar.cc/200?img=1",
+            "image": "https://picsum.photos/400/300?random=51",
+            "likes": 201,
+            "comments": 46,
+            "createdAt": "2025-07-01T14:15:00Z",
+            "tags": [
+                "blockchain",
+                "crypto",
+                "tecnologia"
+            ]
+        },
+        {
+            "id": 52,
+            "title": "Fermentação de Kombucha",
+            "body": "Segundo lote de kombucha caseira pronto! Sabor de gengibre e limão ficou perfeito. Probióticos naturais!",
+            "userId": 2,
+            "userName": "Carlos Mendes",
+            "userAvatar": "https://i.pravatar.cc/200?img=2",
+            "image": "https://picsum.photos/400/300?random=52",
+            "likes": 234,
+            "comments": 52,
+            "createdAt": "2025-06-30T10:40:00Z",
+            "tags": [
+                "kombucha",
+                "fermentação",
+                "probióticos"
+            ]
+        },
+        {
+            "id": 53,
+            "title": "Trilha de 15km",
+            "body": "Desafio aceito e concluído! 15km de trilha com 800m de elevação. Pernas doloridas, mas coração feliz!",
+            "userId": 3,
+            "userName": "Mariana Costa",
+            "userAvatar": "https://i.pravatar.cc/200?img=3",
+            "image": "https://picsum.photos/400/300?random=53",
+            "likes": 178,
+            "comments": 32,
+            "createdAt": "2025-06-29T07:30:00Z",
+            "tags": [
+                "trilha",
+                "desafio",
+                "natureza"
+            ]
+        },
+        {
+            "id": 54,
+            "title": "App com IA Generativa",
+            "body": "Integrei GPT-4 no meu app! Agora os usuários podem gerar conteúdo personalizado com inteligência artificial.",
+            "userId": 4,
+            "userName": "Pedro Santos",
+            "userAvatar": "https://i.pravatar.cc/200?img=4",
+            "image": "https://picsum.photos/400/300?random=54",
+            "likes": 289,
+            "comments": 67,
+            "createdAt": "2025-06-28T13:20:00Z",
+            "tags": [
+                "ia",
+                "gpt",
+                "app"
+            ]
+        },
+        {
+            "id": 55,
+            "title": "Natação em Águas Abertas",
+            "body": "Primeira experiência nadando no mar! 2km em águas abertas. Sensação de liberdade incomparável!",
+            "userId": 5,
+            "userName": "Juliana Oliveira",
+            "userAvatar": "https://i.pravatar.cc/200?img=5",
+            "image": "https://picsum.photos/400/300?random=55",
+            "likes": 167,
+            "comments": 31,
+            "createdAt": "2025-06-27T06:15:00Z",
+            "tags": [
+                "natação",
+                "mar",
+                "águas-abertas"
+            ]
+        },
+        {
+            "id": 56,
+            "title": "Arte em Aquarela",
+            "body": "Voltei à aquarela depois de anos! A transparência e fluidez das cores criam efeitos únicos e relaxantes.",
+            "userId": 6,
+            "userName": "Rafael Lima",
+            "userAvatar": "https://i.pravatar.cc/200?img=6",
+            "image": "https://picsum.photos/400/300?random=56",
+            "likes": 198,
+            "comments": 44,
+            "createdAt": "2025-06-26T15:45:00Z",
+            "tags": [
+                "aquarela",
+                "pintura",
+                "arte"
+            ]
+        },
+        {
+            "id": 57,
+            "title": "Permacultura Urbana",
+            "body": "Workshop de permacultura me abriu os olhos! Sistemas regenerativos podem funcionar até em apartamentos.",
+            "userId": 7,
+            "userName": "Camila Rodrigues",
+            "userAvatar": "https://i.pravatar.cc/200?img=7",
+            "image": "https://picsum.photos/400/300?random=57",
+            "likes": 145,
+            "comments": 28,
+            "createdAt": "2025-06-25T11:30:00Z",
+            "tags": [
+                "permacultura",
+                "sustentabilidade",
+                "urbana"
+            ]
+        },
+        {
+            "id": 58,
+            "title": "Análise de Sentimentos",
+            "body": "Desenvolvi um modelo de análise de sentimentos para redes sociais! 94% de precisão na classificação de emoções.",
+            "userId": 8,
+            "userName": "Bruno Ferreira",
+            "userAvatar": "https://i.pravatar.cc/200?img=8",
+            "image": "https://picsum.photos/400/300?random=58",
+            "likes": 223,
+            "comments": 49,
+            "createdAt": "2025-06-24T16:10:00Z",
+            "tags": [
+                "nlp",
+                "sentimentos",
+                "ai"
+            ]
+        },
+        {
+            "id": 59,
+            "title": "Festival de Música Eletrônica",
+            "body": "Que night incrível no festival! Sets de techno e house que fizeram a pista vibrar até o amanhecer!",
+            "userId": 9,
+            "userName": "Fernanda Alves",
+            "userAvatar": "https://i.pravatar.cc/200?img=9",
+            "image": "https://picsum.photos/400/300?random=59",
+            "likes": 267,
+            "comments": 55,
+            "createdAt": "2025-06-23T23:45:00Z",
+            "tags": [
+                "eletrônica",
+                "festival",
+                "dança"
+            ]
+        },
+        {
+            "id": 60,
+            "title": "Dieta Plant-Based",
+            "body": "Um mês de alimentação 100% plant-based! Mais energia, melhor digestão e consciência ambiental aumentada.",
+            "userId": 10,
+            "userName": "Lucas Barbosa",
+            "userAvatar": "https://i.pravatar.cc/200?img=10",
+            "image": "https://picsum.photos/400/300?random=60",
+            "likes": 189,
+            "comments": 37,
+            "createdAt": "2025-06-22T12:25:00Z",
+            "tags": [
+                "plant-based",
+                "saúde",
+                "sustentabilidade"
+            ]
+        },
+        {
+            "id": 61,
+            "title": "Game em Flutter",
+            "body": "Desenvolvi meu primeiro jogo em Flutter! Um puzzle game com physics engine. Flame Framework é incrível!",
+            "userId": 1,
+            "userName": "Ana Silva",
+            "userAvatar": "https://i.pravatar.cc/200?img=1",
+            "image": "https://picsum.photos/400/300?random=61",
+            "likes": 234,
+            "comments": 58,
+            "createdAt": "2025-06-21T18:50:00Z",
+            "tags": [
+                "game",
+                "flutter",
+                "flame"
+            ]
+        },
+        {
+            "id": 62,
+            "title": "Prato Fusion",
+            "body": "Criei uma fusão entre culinária japonesa e nordestina! Temaki de carne seca com farofa especial. Sucesso total!",
+            "userId": 2,
+            "userName": "Carlos Mendes",
+            "userAvatar": "https://i.pravatar.cc/200?img=2",
+            "image": "https://picsum.photos/400/300?random=62",
+            "likes": 312,
+            "comments": 71,
+            "createdAt": "2025-06-20T20:15:00Z",
+            "tags": [
+                "fusion",
+                "culinária",
+                "criatividade"
+            ]
+        },
+        {
+            "id": 63,
+            "title": "Canyoning",
+            "body": "Adrenalina pura no canyoning! Rapel em cachoeiras e piscinas naturais. Natureza em seu estado mais selvagem!",
+            "userId": 3,
+            "userName": "Mariana Costa",
+            "userAvatar": "https://i.pravatar.cc/200?img=3",
+            "image": "https://picsum.photos/400/300?random=63",
+            "likes": 178,
+            "comments": 34,
+            "createdAt": "2025-06-19T14:30:00Z",
+            "tags": [
+                "canyoning",
+                "rapel",
+                "extremo"
+            ]
+        },
+        {
+            "id": 64,
+            "title": "PWA com Offline First",
+            "body": "Desenvolvi um PWA completo com estratégia offline-first! Service workers e cache garantem funcionalidade total.",
+            "userId": 4,
+            "userName": "Pedro Santos",
+            "userAvatar": "https://i.pravatar.cc/200?img=4",
+            "image": "https://picsum.photos/400/300?random=64",
+            "likes": 201,
+            "comments": 45,
+            "createdAt": "2025-06-18T10:40:00Z",
+            "tags": [
+                "pwa",
+                "offline",
+                "web"
+            ]
+        },
+        {
+            "id": 65,
+            "title": "Ashtanga Yoga",
+            "body": "Primeira aula de Ashtanga! Sequência dinâmica e respiração sincronizada. Desafio físico e mental intenso!",
+            "userId": 5,
+            "userName": "Juliana Oliveira",
+            "userAvatar": "https://i.pravatar.cc/200?img=5",
+            "image": "https://picsum.photos/400/300?random=65",
+            "likes": 134,
+            "comments": 26,
+            "createdAt": "2025-06-17T08:20:00Z",
+            "tags": [
+                "ashtanga",
+                "yoga",
+                "disciplina"
+            ]
+        },
+        {
+            "id": 66,
+            "title": "NFT Art Collection",
+            "body": "Lancei minha primeira coleção de arte digital como NFT! Cada peça conta uma história sobre sustentabilidade.",
+            "userId": 6,
+            "userName": "Rafael Lima",
+            "userAvatar": "https://i.pravatar.cc/200?img=6",
+            "image": "https://picsum.photos/400/300?random=66",
+            "likes": 289,
+            "comments": 62,
+            "createdAt": "2025-06-16T17:25:00Z",
+            "tags": [
+                "nft",
+                "arte",
+                "blockchain"
+            ]
+        },
+        {
+            "id": 67,
+            "title": "Jardim de Chuva",
+            "body": "Instalei um jardim de chuva no quintal! Sistema natural de drenagem que ainda embeleza o espaço.",
+            "userId": 7,
+            "userName": "Camila Rodrigues",
+            "userAvatar": "https://i.pravatar.cc/200?img=7",
+            "image": "https://picsum.photos/400/300?random=67",
+            "likes": 167,
+            "comments": 33,
+            "createdAt": "2025-06-15T13:15:00Z",
+            "tags": [
+                "jardim-chuva",
+                "drenagem",
+                "sustentável"
+            ]
+        },
+        {
+            "id": 68,
+            "title": "Deep Learning com PyTorch",
+            "body": "Implementei uma rede neural convolucional com PyTorch! Reconhecimento de objetos com 98% de precisão.",
+            "userId": 8,
+            "userName": "Bruno Ferreira",
+            "userAvatar": "https://i.pravatar.cc/200?img=8",
+            "image": "https://picsum.photos/400/300?random=68",
+            "likes": 245,
+            "comments": 54,
+            "createdAt": "2025-06-14T15:55:00Z",
+            "tags": [
+                "pytorch",
+                "deep-learning",
+                "cnn"
+            ]
+        },
+        {
+            "id": 69,
+            "title": "Produção Musical Caseira",
+            "body": "Montei um mini estúdio em casa! Primeira faixa produzida com sons da natureza e instrumentos orgânicos.",
+            "userId": 9,
+            "userName": "Fernanda Alves",
+            "userAvatar": "https://i.pravatar.cc/200?img=9",
+            "image": "https://picsum.photos/400/300?random=69",
+            "likes": 198,
+            "comments": 41,
+            "createdAt": "2025-06-13T19:40:00Z",
+            "tags": [
+                "produção",
+                "música",
+                "estúdio"
+            ]
+        },
+        {
+            "id": 70,
+            "title": "Biohacking Nutricional",
+            "body": "Experimentando biohacking nutricional! Análise de biomarkers mostra melhorias significativas em 30 dias.",
+            "userId": 10,
+            "userName": "Lucas Barbosa",
+            "userAvatar": "https://i.pravatar.cc/200?img=10",
+            "image": "https://picsum.photos/400/300?random=70",
+            "likes": 178,
+            "comments": 36,
+            "createdAt": "2025-06-12T11:10:00Z",
+            "tags": [
+                "biohacking",
+                "nutrição",
+                "otimização"
+            ]
+        },
+        {
+            "id": 71,
+            "title": "Curso de GraphQL",
+            "body": "Dominando GraphQL! API mais eficiente com queries personalizadas. Substitui várias requisições REST por uma só!",
+            "userId": 1,
+            "userName": "Ana Silva",
+            "userAvatar": "https://i.pravatar.cc/200?img=1",
+            "image": "https://picsum.photos/400/300?random=71",
+            "likes": 156,
+            "comments": 32,
+            "createdAt": "2025-06-11T14:25:00Z",
+            "tags": [
+                "graphql",
+                "api",
+                "desenvolvimento"
+            ]
+        },
+        {
+            "id": 72,
+            "title": "Pão Sourdough Integral",
+            "body": "Aperfeiçoando a técnica do sourdough! Versão integral com sementes ficou com textura e sabor incríveis.",
+            "userId": 2,
+            "userName": "Carlos Mendes",
+            "userAvatar": "https://i.pravatar.cc/200?img=2",
+            "image": "https://picsum.photos/400/300?random=72",
+            "likes": 234,
+            "comments": 48,
+            "createdAt": "2025-06-10T09:40:00Z",
+            "tags": [
+                "sourdough",
+                "integral",
+                "panificação"
+            ]
+        },
+        {
+            "id": 73,
+            "title": "Via Ferrata",
+            "body": "Primeira experiência na via ferrata! Escalada assistida com equipamentos fixos. Adrenalina e segurança combinadas!",
+            "userId": 3,
+            "userName": "Mariana Costa",
+            "userAvatar": "https://i.pravatar.cc/200?img=3",
+            "image": "https://picsum.photos/400/300?random=73",
+            "likes": 189,
+            "comments": 35,
+            "createdAt": "2025-06-09T16:15:00Z",
+            "tags": [
+                "via-ferrata",
+                "escalada",
+                "montanha"
+            ]
+        },
+        {
+            "id": 74,
+            "title": "Microserviços com Docker",
+            "body": "Arquitetura de microserviços rodando em containers! Kubernetes orquestrando tudo perfeitamente. Escalabilidade garantida!",
+            "userId": 4,
+            "userName": "Pedro Santos",
+            "userAvatar": "https://i.pravatar.cc/200?img=4",
+            "image": "https://picsum.photos/400/300?random=74",
+            "likes": 267,
+            "comments": 59,
+            "createdAt": "2025-06-08T12:30:00Z",
+            "tags": [
+                "microserviços",
+                "docker",
+                "kubernetes"
+            ]
+        },
+        {
+            "id": 75,
+            "title": "Pilates Avançado",
+            "body": "Evoluindo no pilates! Exercícios avançados no reformer estão fortalecendo músculos que nem sabia que existiam!",
+            "userId": 5,
+            "userName": "Juliana Oliveira",
+            "userAvatar": "https://i.pravatar.cc/200?img=5",
+            "image": "https://picsum.photos/400/300?random=75",
+            "likes": 145,
+            "comments": 28,
+            "createdAt": "2025-06-07T18:20:00Z",
+            "tags": [
+                "pilates",
+                "reformer",
+                "fortalecimento"
+            ]
+        },
+        {
+            "id": 76,
+            "title": "Motion Graphics",
+            "body": "Explorando motion graphics no After Effects! Animações fluidas e transições cinematográficas para projetos comerciais.",
+            "userId": 6,
+            "userName": "Rafael Lima",
+            "userAvatar": "https://i.pravatar.cc/200?img=6",
+            "image": "https://picsum.photos/400/300?random=76",
+            "likes": 298,
+            "comments": 65,
+            "createdAt": "2025-06-06T15:45:00Z",
+            "tags": [
+                "motion",
+                "after-effects",
+                "animação"
+            ]
+        },
+        {
+            "id": 77,
+            "title": "Sistema de Aquaponia",
+            "body": "Montei um sistema de aquaponia caseiro! Peixes alimentam as plantas e plantas filtram a água. Ciclo perfeito!",
+            "userId": 7,
+            "userName": "Camila Rodrigues",
+            "userAvatar": "https://i.pravatar.cc/200?img=7",
+            "image": "https://picsum.photos/400/300?random=77",
+            "likes": 223,
+            "comments": 44,
+            "createdAt": "2025-06-05T11:10:00Z",
+            "tags": [
+                "aquaponia",
+                "sustentável",
+                "sistema"
+            ]
+        },
+        {
+            "id": 78,
+            "title": "Computer Vision",
+            "body": "Projeto de visão computacional para detecção de objetos em tempo real! OpenCV e Python trabalhando juntos!",
+            "userId": 8,
+            "userName": "Bruno Ferreira",
+            "userAvatar": "https://i.pravatar.cc/200?img=8",
+            "image": "https://picsum.photos/400/300?random=78",
+            "likes": 234,
+            "comments": 52,
+            "createdAt": "2025-06-04T13:55:00Z",
+            "tags": [
+                "computer-vision",
+                "opencv",
+                "detecção"
+            ]
+        },
+        {
+            "id": 79,
+            "title": "Live Session Acústica",
+            "body": "Gravei uma live session acústica! Voz e violão em ambiente intimista. A simplicidade tem sua própria magia!",
+            "userId": 9,
+            "userName": "Fernanda Alves",
+            "userAvatar": "https://i.pravatar.cc/200?img=9",
+            "image": "https://picsum.photos/400/300?random=79",
+            "likes": 187,
+            "comments": 39,
+            "createdAt": "2025-06-03T20:30:00Z",
+            "tags": [
+                "acústica",
+                "live",
+                "intimista"
+            ]
+        },
+        {
+            "id": 80,
+            "title": "Ayurveda e Alimentação",
+            "body": "Estudando princípios ayurvédicos na alimentação! Cada dosha tem necessidades específicas. Conhecimento milenar!",
+            "userId": 10,
+            "userName": "Lucas Barbosa",
+            "userAvatar": "https://i.pravatar.cc/200?img=10",
+            "image": "https://picsum.photos/400/300?random=80",
+            "likes": 156,
+            "comments": 31,
+            "createdAt": "2025-06-02T08:45:00Z",
+            "tags": [
+                "ayurveda",
+                "dosha",
+                "milenar"
+            ]
+        },
+        {
+            "id": 81,
+            "title": "React Query Optimization",
+            "body": "Otimizando performance com React Query! Cache inteligente e sincronização automática revolucionaram meu app!",
+            "userId": 1,
+            "userName": "Ana Silva",
+            "userAvatar": "https://i.pravatar.cc/200?img=1",
+            "image": "https://picsum.photos/400/300?random=81",
+            "likes": 201,
+            "comments": 43,
+            "createdAt": "2025-06-01T16:20:00Z",
+            "tags": [
+                "react-query",
+                "cache",
+                "performance"
+            ]
+        },
+        {
+            "id": 82,
+            "title": "Chocolate Bean-to-Bar",
+            "body": "Processo completo do bean-to-bar! Do grão de cacau à barra de chocolate. Cada etapa influencia o sabor final!",
+            "userId": 2,
+            "userName": "Carlos Mendes",
+            "userAvatar": "https://i.pravatar.cc/200?img=2",
+            "image": "https://picsum.photos/400/300?random=82",
+            "likes": 289,
+            "comments": 67,
+            "createdAt": "2025-05-31T14:35:00Z",
+            "tags": [
+                "chocolate",
+                "bean-to-bar",
+                "artesanal"
+            ]
+        },
+        {
+            "id": 83,
+            "title": "Expedição Fotográfica",
+            "body": "Expedição fotográfica de 5 dias! Capturei a vida selvagem em seu habitat natural. Paciência e timing são tudo!",
+            "userId": 3,
+            "userName": "Mariana Costa",
+            "userAvatar": "https://i.pravatar.cc/200?img=3",
+            "image": "https://picsum.photos/400/300?random=83",
+            "likes": 267,
+            "comments": 54,
+            "createdAt": "2025-05-30T07:15:00Z",
+            "tags": [
+                "expedição",
+                "fotografia",
+                "vida-selvagem"
+            ]
+        },
+        {
+            "id": 84,
+            "title": "Serverless com AWS Lambda",
+            "body": "Migrei para arquitetura serverless! AWS Lambda processando milhões de requisições sem gerenciar servidores!",
+            "userId": 4,
+            "userName": "Pedro Santos",
+            "userAvatar": "https://i.pravatar.cc/200?img=4",
+            "image": "https://picsum.photos/400/300?random=84",
+            "likes": 178,
+            "comments": 36,
+            "createdAt": "2025-05-29T11:50:00Z",
+            "tags": [
+                "serverless",
+                "aws",
+                "lambda"
+            ]
+        },
+        {
+            "id": 85,
+            "title": "Strongman Training",
+            "body": "Iniciando treinamento strongman! Carregamento de pedras, pneus e correntes. Força funcional no extremo!",
+            "userId": 5,
+            "userName": "Juliana Oliveira",
+            "userAvatar": "https://i.pravatar.cc/200?img=5",
+            "image": "https://picsum.photos/400/300?random=85",
+            "likes": 198,
+            "comments": 41,
+            "createdAt": "2025-05-28T17:25:00Z",
+            "tags": [
+                "strongman",
+                "força",
+                "funcional"
+            ]
+        },
+        {
+            "id": 86,
+            "title": "Pixel Art Retrô",
+            "body": "Voltando às origens com pixel art! Sprites de 16-bit para um jogo indie. Cada pixel importa na composição!",
+            "userId": 6,
+            "userName": "Rafael Lima",
+            "userAvatar": "https://i.pravatar.cc/200?img=6",
+            "image": "https://picsum.photos/400/300?random=86",
+            "likes": 234,
+            "comments": 49,
+            "createdAt": "2025-05-27T13:40:00Z",
+            "tags": [
+                "pixel-art",
+                "16-bit",
+                "indie"
+            ]
+        },
+        {
+            "id": 87,
+            "title": "Telhado Verde Modular",
+            "body": "Instalei módulos de telhado verde! Isolamento térmico natural e habitat para pássaros urbanos. Inovação sustentável!",
+            "userId": 7,
+            "userName": "Camila Rodrigues",
+            "userAvatar": "https://i.pravatar.cc/200?img=7",
+            "image": "https://picsum.photos/400/300?random=87",
+            "likes": 167,
+            "comments": 33,
+            "createdAt": "2025-05-26T10:15:00Z",
+            "tags": [
+                "telhado-verde",
+                "sustentável",
+                "modular"
+            ]
+        },
+        {
+            "id": 88,
+            "title": "Quantum Computing Basics",
+            "body": "Primeiros passos em computação quântica! Qubits e superposição desafiam tudo que sabia sobre programação!",
+            "userId": 8,
+            "userName": "Bruno Ferreira",
+            "userAvatar": "https://i.pravatar.cc/200?img=8",
+            "image": "https://picsum.photos/400/300?random=88",
+            "likes": 289,
+            "comments": 71,
+            "createdAt": "2025-05-25T15:30:00Z",
+            "tags": [
+                "quantum",
+                "qubits",
+                "computação"
+            ]
+        },
+        {
+            "id": 89,
+            "title": "Sampling e Beatmaking",
+            "body": "Criando beats com samples vintage! MPC e vinil criando texturas sonoras únicas. Hip-hop roots renascendo!",
+            "userId": 9,
+            "userName": "Fernanda Alves",
+            "userAvatar": "https://i.pravatar.cc/200?img=9",
+            "image": "https://picsum.photos/400/300?random=89",
+            "likes": 198,
+            "comments": 42,
+            "createdAt": "2025-05-24T19:45:00Z",
+            "tags": [
+                "sampling",
+                "beatmaking",
+                "hip-hop"
+            ]
+        },
+        {
+            "id": 90,
+            "title": "Protocolo de Recuperação",
+            "body": "Desenvolvendo protocolo de recuperação pós-treino! Crioterapia, sauna e massagem. Ciência aplicada ao bem-estar!",
+            "userId": 10,
+            "userName": "Lucas Barbosa",
+            "userAvatar": "https://i.pravatar.cc/200?img=10",
+            "image": "https://picsum.photos/400/300?random=90",
+            "likes": 145,
+            "comments": 29,
+            "createdAt": "2025-05-23T12:20:00Z",
+            "tags": [
+                "recuperação",
+                "crioterapia",
+                "protocolo"
+            ]
+        },
+        {
+            "id": 91,
+            "title": "Web3 e DApps",
+            "body": "Desenvolvendo meu primeiro DApp! Smart contracts na blockchain Ethereum. O futuro descentralizado chegou!",
+            "userId": 1,
+            "userName": "Ana Silva",
+            "userAvatar": "https://i.pravatar.cc/200?img=1",
+            "image": "https://picsum.photos/400/300?random=91",
+            "likes": 223,
+            "comments": 58,
+            "createdAt": "2025-05-22T14:10:00Z",
+            "tags": [
+                "web3",
+                "dapp",
+                "ethereum"
+            ]
+        },
+        {
+            "id": 92,
+            "title": "Fermentação Japonesa",
+            "body": "Explorando fermentação japonesa! Miso, shoyu e mirin caseiros. Umami natural após meses de paciência!",
+            "userId": 2,
+            "userName": "Carlos Mendes",
+            "userAvatar": "https://i.pravatar.cc/200?img=2",
+            "image": "https://picsum.photos/400/300?random=92",
+            "likes": 234,
+            "comments": 51,
+            "createdAt": "2025-05-21T09:55:00Z",
+            "tags": [
+                "fermentação",
+                "japonesa",
+                "umami"
+            ]
+        },
+        {
+            "id": 93,
+            "title": "Ultramaratona Desert",
+            "body": "Desafio extremo: ultramaratona no deserto! 100km sob sol escaldante. Limites físicos e mentais testados!",
+            "userId": 3,
+            "userName": "Mariana Costa",
+            "userAvatar": "https://i.pravatar.cc/200?img=3",
+            "image": "https://picsum.photos/400/300?random=93",
+            "likes": 298,
+            "comments": 76,
+            "createdAt": "2025-05-20T06:30:00Z",
+            "tags": [
+                "ultramaratona",
+                "deserto",
+                "extremo"
+            ]
+        },
+        {
+            "id": 94,
+            "title": "Edge Computing IoT",
+            "body": "Implementando edge computing para IoT! Processamento local reduz latência em 90%. Eficiência revolucionária!",
+            "userId": 4,
+            "userName": "Pedro Santos",
+            "userAvatar": "https://i.pravatar.cc/200?img=4",
+            "image": "https://picsum.photos/400/300?random=94",
+            "likes": 167,
+            "comments": 34,
+            "createdAt": "2025-05-19T16:40:00Z",
+            "tags": [
+                "edge-computing",
+                "iot",
+                "latência"
+            ]
+        },
+        {
+            "id": 95,
+            "title": "Calistenia Avançada",
+            "body": "Dominando movimentos avançados de calistenia! Muscle-up, front lever e human flag. Próprio corpo como academia!",
+            "userId": 5,
+            "userName": "Juliana Oliveira",
+            "userAvatar": "https://i.pravatar.cc/200?img=5",
+            "image": "https://picsum.photos/400/300?random=95",
+            "likes": 189,
+            "comments": 38,
+            "createdAt": "2025-05-18T18:15:00Z",
+            "tags": [
+                "calistenia",
+                "muscle-up",
+                "avançado"
+            ]
+        },
+        {
+            "id": 96,
+            "title": "Concept Art Sci-Fi",
+            "body": "Criando concept art para filme sci-fi! Naves espaciais e cidades futuristas. Imaginação sem limites no digital!",
+            "userId": 6,
+            "userName": "Rafael Lima",
+            "userAvatar": "https://i.pravatar.cc/200?img=6",
+            "image": "https://picsum.photos/400/300?random=96",
+            "likes": 267,
+            "comments": 61,
+            "createdAt": "2025-05-17T11:25:00Z",
+            "tags": [
+                "concept-art",
+                "sci-fi",
+                "futurista"
+            ]
+        },
+        {
+            "id": 97,
+            "title": "Biodigestor Doméstico",
+            "body": "Construí um biodigestor caseiro! Restos orgânicos gerando gás para cozinhar. Energia renovável no quintal!",
+            "userId": 7,
+            "userName": "Camila Rodrigues",
+            "userAvatar": "https://i.pravatar.cc/200?img=7",
+            "image": "https://picsum.photos/400/300?random=97",
+            "likes": 198,
+            "comments": 45,
+            "createdAt": "2025-05-16T13:50:00Z",
+            "tags": [
+                "biodigestor",
+                "energia",
+                "renovável"
+            ]
+        },
+        {
+            "id": 98,
+            "title": "Neural Networks from Scratch",
+            "body": "Implementei redes neurais do zero em Python! Sem frameworks, apenas matemática pura. Entendimento profundo da IA!",
+            "userId": 8,
+            "userName": "Bruno Ferreira",
+            "userAvatar": "https://i.pravatar.cc/200?img=8",
+            "image": "https://picsum.photos/400/300?random=98",
+            "likes": 234,
+            "comments": 56,
+            "createdAt": "2025-05-15T15:35:00Z",
+            "tags": [
+                "neural-networks",
+                "python",
+                "matemática"
+            ]
+        },
+        {
+            "id": 99,
+            "title": "Álbum Conceitual",
+            "body": "Finalizando álbum conceitual sobre mudanças climáticas! 12 faixas que contam uma história através da música!",
+            "userId": 9,
+            "userName": "Fernanda Alves",
+            "userAvatar": "https://i.pravatar.cc/200?img=9",
+            "image": "https://picsum.photos/400/300?random=99",
+            "likes": 345,
+            "comments": 89,
+            "createdAt": "2025-05-14T20:10:00Z",
+            "tags": [
+                "álbum",
+                "conceitual",
+                "ambiental"
+            ]
+        },
+        {
+            "id": 100,
+            "title": "Longevidade e Epigenética",
+            "body": "Estudando epigenética para longevidade! Como estilo de vida influencia expressão genética. Ciência da vida longa!",
+            "userId": 10,
+            "userName": "Lucas Barbosa",
+            "userAvatar": "https://i.pravatar.cc/200?img=10",
+            "image": "https://picsum.photos/400/300?random=100",
+            "likes": 178,
+            "comments": 41,
+            "createdAt": "2025-05-13T08:00:00Z",
+            "tags": [
+                "longevidade",
+                "epigenética",
+                "ciência"
+            ]
+        }
+    ]
+}

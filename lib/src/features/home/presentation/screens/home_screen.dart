@@ -9,9 +9,9 @@ import '../../../auth/presentation/screens/login_screen.dart';
 import '../../../posts/presentation/bloc/post_cubit.dart';
 import '../../../posts/presentation/bloc/post_state.dart';
 import '../../../posts/presentation/widgets/post_item.dart';
-import '../../../posts/presentation/screens/post_detail_screen.dart';
 import '../../../../core/services/image_picker_service.dart';
 import '../../../../core/services/firebase_storage_service.dart';
+import '../../../../core/routes/app_routes.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = '/home';
@@ -21,10 +21,34 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   final ImagePickerService _imagePickerService = ImagePickerService();
   final FirebaseStorageService _storageService = FirebaseStorageService();
   bool _isUploadingPhoto = false;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    // Carrega os posts sempre que a home screen for inicializada
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<PostCubit>().loadPosts();
+    });
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      // Recarrega os posts quando o app voltar do background
+      context.read<PostCubit>().refreshPosts();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -105,40 +129,59 @@ class _HomeScreenState extends State<HomeScreen> {
                         await context.read<PostCubit>().refreshPosts();
                       },
                       child: ListView.builder(
-                        itemCount: postState.hasReachedMax
-                            ? postState.posts.length
-                            : postState.posts.length + 1,
+                        itemCount:
+                            postState.posts.length +
+                            (postState.hasReachedMax ? 0 : 1),
                         itemBuilder: (context, index) {
+                          // Se chegou no final da lista e não chegou no máximo
                           if (index >= postState.posts.length) {
-                            // Indicador de carregamento no final da lista
                             return Padding(
                               padding: EdgeInsets.all(
                                 context.mediaQuery.width * 0.04,
                               ),
-                              child: const Center(
-                                child: CircularProgressIndicator(),
+                              child: Center(
+                                child: Column(
+                                  children: [
+                                    const CircularProgressIndicator(),
+                                    const SizedBox(height: 8),
+                                    Text(
+                                      'Carregando...',
+                                      style: Theme.of(
+                                        context,
+                                      ).textTheme.bodySmall,
+                                    ),
+                                  ],
+                                ),
                               ),
                             );
                           }
 
                           final post = postState.posts[index];
 
-                          // Carregar mais posts quando próximo do final
-                          if (index == postState.posts.length - 1 &&
-                              !postState.hasReachedMax) {
-                            context.read<PostCubit>().loadMorePosts();
+                          // Carregar mais posts quando chegar no último post da página atual
+                          // (múltiplos de 10: 9, 19, 29, etc - já que index começa em 0)
+                          if ((index + 1) % 10 == 0 &&
+                              index == postState.posts.length - 1 &&
+                              !postState.hasReachedMax &&
+                              !postState.isLoadingMore) {
+                            WidgetsBinding.instance.addPostFrameCallback((_) {
+                              context.read<PostCubit>().loadMorePosts();
+                            });
                           }
 
                           return PostItem(
                             post: post,
-                            onTap: () {
-                              Navigator.push(
+                            onTap: () async {
+                              final postCubit = context.read<PostCubit>();
+                              await Navigator.pushNamed(
                                 context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      PostDetailScreen(postId: post.id),
-                                ),
+                                AppRoutes.postDetail,
+                                arguments: post.id,
                               );
+                              // Recarrega os posts quando voltar da tela de detalhes
+                              if (mounted) {
+                                postCubit.refreshPosts();
+                              }
                             },
                           );
                         },
@@ -171,10 +214,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     );
                   } else {
-                    // Estado inicial - carrega os posts
-                    WidgetsBinding.instance.addPostFrameCallback((_) {
-                      context.read<PostCubit>().loadPosts();
-                    });
+                    // Estado inicial - mostra indicador de carregamento
                     return const Center(child: CircularProgressIndicator());
                   }
                 },
@@ -391,6 +431,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future<void> _uploadProfilePhoto(File imageFile) async {
     try {
+      // Armazena referências do context antes das operações async
+      final authCubit = context.read<AuthCubit>();
+      final scaffoldMessenger = ScaffoldMessenger.of(context);
+
       // Primeiro verifica se o Storage está configurado
       final isStorageConnected = await _storageService.checkStorageConnection();
       if (!isStorageConnected) {
@@ -402,10 +446,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
       // Atualiza o perfil do usuário no Firebase Auth
       if (mounted) {
-        await context.read<AuthCubit>().updateUserPhotoURL(photoURL);
+        await authCubit.updateUserPhotoURL(photoURL);
 
         if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
+          scaffoldMessenger.showSnackBar(
             const SnackBar(
               content: Text('Foto do perfil atualizada com sucesso!'),
               backgroundColor: Colors.green,
@@ -416,6 +460,7 @@ class _HomeScreenState extends State<HomeScreen> {
       }
     } catch (e) {
       if (mounted) {
+        final scaffoldMessenger = ScaffoldMessenger.of(context);
         String errorMessage = 'Erro ao atualizar foto do perfil';
 
         // Personaliza a mensagem baseada no tipo de erro
@@ -432,7 +477,7 @@ class _HomeScreenState extends State<HomeScreen> {
           errorMessage = 'Usuário não está logado. Faça login novamente.';
         }
 
-        ScaffoldMessenger.of(context).showSnackBar(
+        scaffoldMessenger.showSnackBar(
           SnackBar(
             content: Column(
               mainAxisSize: MainAxisSize.min,
@@ -451,8 +496,7 @@ class _HomeScreenState extends State<HomeScreen> {
             action: SnackBarAction(
               label: 'OK',
               textColor: Colors.white,
-              onPressed: () =>
-                  ScaffoldMessenger.of(context).hideCurrentSnackBar(),
+              onPressed: () => scaffoldMessenger.hideCurrentSnackBar(),
             ),
           ),
         );
@@ -468,16 +512,22 @@ class _HomeScreenState extends State<HomeScreen> {
         _isUploadingPhoto = true;
       });
 
+      // Armazena referências do context antes das operações async
+      final authCubit = context.read<AuthCubit>();
+      final scaffoldMessenger = ScaffoldMessenger.of(context);
+
       // Remove a foto do perfil (define como null/vazio)
       if (mounted) {
-        await context.read<AuthCubit>().updateUserPhotoURL('');
+        await authCubit.updateUserPhotoURL('');
 
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Foto do perfil removida com sucesso!'),
-            backgroundColor: Colors.green,
-          ),
-        );
+        if (mounted) {
+          scaffoldMessenger.showSnackBar(
+            const SnackBar(
+              content: Text('Foto do perfil removida com sucesso!'),
+              backgroundColor: Colors.green,
+            ),
+          );
+        }
       }
     } catch (e) {
       if (mounted) {
