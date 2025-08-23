@@ -143,7 +143,9 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                                 child: Column(
                                   children: [
                                     const CircularProgressIndicator(),
-                                    const SizedBox(height: 8),
+                                    SizedBox(
+                                      height: context.mediaQuery.height * 0.01,
+                                    ),
                                     Text(
                                       'Carregando...',
                                       style: Theme.of(
@@ -484,10 +486,13 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(errorMessage),
-                const SizedBox(height: 4),
+                SizedBox(height: context.mediaQuery.height * 0.005),
                 Text(
                   'Detalhes: ${e.toString()}',
-                  style: const TextStyle(fontSize: 12, color: Colors.white70),
+                  style: TextStyle(
+                    fontSize: context.mediaQuery.width * 0.03,
+                    color: Colors.white70,
+                  ),
                 ),
               ],
             ),

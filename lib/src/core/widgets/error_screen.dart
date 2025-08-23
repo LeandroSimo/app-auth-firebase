@@ -1,3 +1,4 @@
+import 'package:app_test/src/core/utils/extensions.dart';
 import 'package:flutter/material.dart';
 
 class ErrorScreen extends StatelessWidget {
@@ -11,12 +12,16 @@ class ErrorScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(24.0),
+          padding: EdgeInsets.all(context.mediaQuery.width * 0.06),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.error_outline, size: 80, color: Colors.red[300]),
-              const SizedBox(height: 24),
+              Icon(
+                Icons.error_outline,
+                size: context.mediaQuery.width * 0.2,
+                color: Colors.red[300],
+              ),
+              SizedBox(height: context.mediaQuery.height * 0.03),
               Text(
                 'Ops! Algo deu errado',
                 style: Theme.of(context).textTheme.headlineSmall?.copyWith(
@@ -24,7 +29,7 @@ class ErrorScreen extends StatelessWidget {
                 ),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: context.mediaQuery.height * 0.02),
               Text(
                 message,
                 style: Theme.of(
@@ -32,18 +37,18 @@ class ErrorScreen extends StatelessWidget {
                 ).textTheme.bodyLarge?.copyWith(color: Colors.grey[600]),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 32),
+              SizedBox(height: context.mediaQuery.height * 0.04),
               if (onRetry != null) ...[
                 SizedBox(
                   width: double.infinity,
-                  height: 50,
+                  height: context.mediaQuery.height * 0.06,
                   child: ElevatedButton.icon(
                     onPressed: onRetry,
                     icon: const Icon(Icons.refresh),
                     label: const Text('Tentar Novamente'),
                   ),
                 ),
-                const SizedBox(height: 16),
+                SizedBox(height: context.mediaQuery.height * 0.02),
               ],
               OutlinedButton(
                 onPressed: () {

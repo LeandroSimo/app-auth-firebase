@@ -17,21 +17,23 @@ class PostItem extends StatelessWidget {
         vertical: context.mediaQuery.height * 0.01,
       ),
       elevation: 3,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(context.mediaQuery.width * 0.03),
+      ),
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(context.mediaQuery.width * 0.03),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Header com informações do usuário
             Padding(
-              padding: const EdgeInsets.all(16),
+              padding: EdgeInsets.all(context.mediaQuery.width * 0.04),
               child: Row(
                 children: [
                   // Avatar do usuário
                   CircleAvatar(
-                    radius: 20,
+                    radius: context.mediaQuery.width * 0.05,
                     backgroundImage: post.userAvatar.isNotEmpty
                         ? NetworkImage(post.userAvatar)
                         : null,
@@ -40,7 +42,7 @@ class PostItem extends StatelessWidget {
                         ? Icon(Icons.person, color: Colors.grey[600])
                         : null,
                   ),
-                  const SizedBox(width: 12),
+                  SizedBox(width: context.mediaQuery.width * 0.03),
                   // Nome e tempo
                   Expanded(
                     child: Column(
@@ -65,7 +67,7 @@ class PostItem extends StatelessWidget {
                       // TODO: Implementar menu de opções
                     },
                     icon: const Icon(Icons.more_vert),
-                    iconSize: 20,
+                    iconSize: context.mediaQuery.width * 0.05,
                   ),
                 ],
               ),
@@ -73,7 +75,9 @@ class PostItem extends StatelessWidget {
 
             // Título do post
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: EdgeInsets.symmetric(
+                horizontal: context.mediaQuery.width * 0.04,
+              ),
               child: Text(
                 post.title,
                 style: Theme.of(
@@ -82,11 +86,13 @@ class PostItem extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 8),
+            SizedBox(height: context.mediaQuery.height * 0.01),
 
             // Conteúdo do post
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: EdgeInsets.symmetric(
+                horizontal: context.mediaQuery.width * 0.04,
+              ),
               child: post.isContentTruncated
                   ? Text.rich(
                       TextSpan(
@@ -120,20 +126,26 @@ class PostItem extends StatelessWidget {
                     ),
             ),
 
-            const SizedBox(height: 12),
+            SizedBox(height: context.mediaQuery.height * 0.015),
 
             // Imagem do post
             if (post.image.isNotEmpty)
               Container(
                 width: double.infinity,
-                height: 200,
-                margin: const EdgeInsets.symmetric(horizontal: 16),
+                height: context.mediaQuery.height * 0.25,
+                margin: EdgeInsets.symmetric(
+                  horizontal: context.mediaQuery.width * 0.04,
+                ),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(
+                    context.mediaQuery.width * 0.02,
+                  ),
                   color: Colors.grey[300],
                 ),
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(
+                    context.mediaQuery.width * 0.02,
+                  ),
                   child: Image.network(
                     post.image,
                     fit: BoxFit.cover,
@@ -153,21 +165,23 @@ class PostItem extends StatelessWidget {
             // Tags
             if (post.tags.isNotEmpty)
               Padding(
-                padding: const EdgeInsets.all(16),
+                padding: EdgeInsets.all(context.mediaQuery.width * 0.04),
                 child: Wrap(
-                  spacing: 8,
-                  runSpacing: 4,
+                  spacing: context.mediaQuery.width * 0.02,
+                  runSpacing: context.mediaQuery.width * 0.01,
                   children: post.tags.take(3).map((tag) {
                     return Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 4,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: context.mediaQuery.width * 0.02,
+                        vertical: context.mediaQuery.height * 0.005,
                       ),
                       decoration: BoxDecoration(
                         color: Theme.of(
                           context,
                         ).primaryColor.withValues(alpha: 0.1),
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(
+                          context.mediaQuery.width * 0.03,
+                        ),
                       ),
                       child: Text(
                         '#$tag',
@@ -183,7 +197,10 @@ class PostItem extends StatelessWidget {
 
             // Botões de ação (likes, comentários)
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              padding: EdgeInsets.symmetric(
+                horizontal: context.mediaQuery.width * 0.04,
+                vertical: context.mediaQuery.height * 0.01,
+              ),
               child: Row(
                 children: [
                   // Like
@@ -191,21 +208,23 @@ class PostItem extends StatelessWidget {
                     onTap: () {
                       // TODO: Implementar like
                     },
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(
+                      context.mediaQuery.width * 0.05,
+                    ),
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 8,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: context.mediaQuery.width * 0.03,
+                        vertical: context.mediaQuery.height * 0.01,
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          const Icon(
+                          Icon(
                             Icons.favorite_border,
-                            size: 20,
+                            size: context.mediaQuery.width * 0.05,
                             color: Colors.grey,
                           ),
-                          const SizedBox(width: 4),
+                          SizedBox(width: context.mediaQuery.width * 0.01),
                           Text(
                             '${post.likes}',
                             style: Theme.of(context).textTheme.bodySmall
@@ -216,26 +235,28 @@ class PostItem extends StatelessWidget {
                     ),
                   ),
 
-                  const SizedBox(width: 16),
+                  SizedBox(width: context.mediaQuery.width * 0.04),
 
                   // Comentários
                   InkWell(
                     onTap: onTap,
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(
+                      context.mediaQuery.width * 0.05,
+                    ),
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 8,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: context.mediaQuery.width * 0.03,
+                        vertical: context.mediaQuery.height * 0.01,
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          const Icon(
+                          Icon(
                             Icons.chat_bubble_outline,
-                            size: 20,
+                            size: context.mediaQuery.width * 0.05,
                             color: Colors.grey,
                           ),
-                          const SizedBox(width: 4),
+                          SizedBox(width: context.mediaQuery.width * 0.01),
                           Text(
                             '${post.comments}',
                             style: Theme.of(context).textTheme.bodySmall
@@ -246,7 +267,7 @@ class PostItem extends StatelessWidget {
                     ),
                   ),
 
-                  const Spacer(),
+                  Spacer(),
                 ],
               ),
             ),

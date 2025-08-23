@@ -1,3 +1,4 @@
+import 'package:app_test/src/core/utils/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/post_cubit.dart';
@@ -38,7 +39,7 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
           } else if (state is PostDetailLoaded) {
             final post = state.post;
             return SingleChildScrollView(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(context.mediaQuery.width * 0.04),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -47,7 +48,7 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
                     children: [
                       // Avatar do usuário
                       CircleAvatar(
-                        radius: 25,
+                        radius: context.mediaQuery.width * 0.06,
                         backgroundImage: post.userAvatar.isNotEmpty
                             ? NetworkImage(post.userAvatar)
                             : null,
@@ -56,7 +57,7 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
                             ? Icon(Icons.person, color: Colors.grey[600])
                             : null,
                       ),
-                      const SizedBox(width: 12),
+                      SizedBox(width: context.mediaQuery.width * 0.03),
                       // Nome e tempo
                       Expanded(
                         child: Column(
@@ -78,7 +79,7 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
                     ],
                   ),
 
-                  const SizedBox(height: 20),
+                  SizedBox(height: context.mediaQuery.height * 0.025),
 
                   // Título
                   Text(
@@ -87,7 +88,7 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: context.mediaQuery.height * 0.02),
 
                   // Conteúdo completo
                   Text(
@@ -96,33 +97,41 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
                       context,
                     ).textTheme.bodyLarge?.copyWith(height: 1.6),
                   ),
-                  const SizedBox(height: 20),
+                  SizedBox(height: context.mediaQuery.height * 0.025),
 
                   // Imagem do post
                   if (post.image.isNotEmpty) ...[
                     Container(
                       width: double.infinity,
-                      constraints: const BoxConstraints(maxHeight: 300),
+                      constraints: BoxConstraints(
+                        maxHeight: context.mediaQuery.height * 0.35,
+                      ),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(
+                          context.mediaQuery.width * 0.03,
+                        ),
                         color: Colors.grey[300],
                       ),
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(
+                          context.mediaQuery.width * 0.03,
+                        ),
                         child: Image.network(
                           post.image,
                           fit: BoxFit.cover,
                           loadingBuilder: (context, child, loadingProgress) {
                             if (loadingProgress == null) return child;
-                            return const SizedBox(
-                              height: 200,
-                              child: Center(child: CircularProgressIndicator()),
+                            return SizedBox(
+                              height: context.mediaQuery.height * 0.25,
+                              child: const Center(
+                                child: CircularProgressIndicator(),
+                              ),
                             );
                           },
                           errorBuilder: (context, error, stackTrace) {
-                            return const SizedBox(
-                              height: 200,
-                              child: Center(
+                            return SizedBox(
+                              height: context.mediaQuery.height * 0.25,
+                              child: const Center(
                                 child: Icon(Icons.error, color: Colors.grey),
                               ),
                             );
@@ -130,7 +139,7 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: context.mediaQuery.height * 0.025),
                   ],
 
                   // Tags
@@ -141,21 +150,23 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(height: 8),
+                    SizedBox(height: context.mediaQuery.height * 0.01),
                     Wrap(
-                      spacing: 8,
-                      runSpacing: 8,
+                      spacing: context.mediaQuery.width * 0.02,
+                      runSpacing: context.mediaQuery.width * 0.02,
                       children: post.tags.map((tag) {
                         return Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 12,
-                            vertical: 6,
+                          padding: EdgeInsets.symmetric(
+                            horizontal: context.mediaQuery.width * 0.03,
+                            vertical: context.mediaQuery.height * 0.008,
                           ),
                           decoration: BoxDecoration(
                             color: Theme.of(
                               context,
                             ).primaryColor.withValues(alpha: 0.1),
-                            borderRadius: BorderRadius.circular(16),
+                            borderRadius: BorderRadius.circular(
+                              context.mediaQuery.width * 0.04,
+                            ),
                             border: Border.all(
                               color: Theme.of(
                                 context,
@@ -173,14 +184,14 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
                         );
                       }).toList(),
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: context.mediaQuery.height * 0.025),
                   ],
 
                   // Estatísticas
                   Card(
                     elevation: 2,
                     child: Padding(
-                      padding: const EdgeInsets.all(16),
+                      padding: EdgeInsets.all(context.mediaQuery.width * 0.04),
                       child: Column(
                         children: [
                           Row(
@@ -191,9 +202,11 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
                                   Icon(
                                     Icons.favorite,
                                     color: Colors.red[300],
-                                    size: 24,
+                                    size: context.mediaQuery.width * 0.06,
                                   ),
-                                  const SizedBox(height: 4),
+                                  SizedBox(
+                                    height: context.mediaQuery.height * 0.005,
+                                  ),
                                   Text(
                                     '${post.likes}',
                                     style: Theme.of(context)
@@ -213,9 +226,11 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
                                   Icon(
                                     Icons.chat_bubble,
                                     color: Colors.blue[300],
-                                    size: 24,
+                                    size: context.mediaQuery.width * 0.06,
                                   ),
-                                  const SizedBox(height: 4),
+                                  SizedBox(
+                                    height: context.mediaQuery.height * 0.005,
+                                  ),
                                   Text(
                                     '${post.comments}',
                                     style: Theme.of(context)
@@ -244,14 +259,18 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.error_outline, size: 64, color: Colors.grey[400]),
-                  const SizedBox(height: 16),
+                  Icon(
+                    Icons.error_outline,
+                    size: context.mediaQuery.width * 0.16,
+                    color: Colors.grey[400],
+                  ),
+                  SizedBox(height: context.mediaQuery.height * 0.02),
                   Text(
                     state.message,
                     style: Theme.of(context).textTheme.titleMedium,
                     textAlign: TextAlign.center,
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: context.mediaQuery.height * 0.02),
                   ElevatedButton(
                     onPressed: () {
                       context.read<PostDetailCubit>().loadPost(widget.postId);
