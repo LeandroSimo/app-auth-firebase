@@ -124,7 +124,7 @@ class FirebaseStorageService {
 
 void debugPrint(String message) {
   // Usando print temporariamente para debug
-  // Em produção, usar um logger apropriado
+  // Em produção, usaria um logger apropriado
   // ignore: avoid_print
   print('[FirebaseStorage] $message');
 }

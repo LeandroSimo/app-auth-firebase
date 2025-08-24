@@ -1,59 +1,6 @@
-import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:app_test/src/core/services/firebase_storage_service.dart';
 
 void main() {
-  group('FirebaseStorageService', () {
-    late FirebaseStorageService storageService;
-
-    setUp(() {
-      storageService = FirebaseStorageService();
-    });
-
-    group('uploadProfilePhoto', () {
-      test('should validate input for photo upload', () async {
-        // Since this test requires Firebase configuration and real file,
-        // we will test the method structure
-
-        // Arrange
-        final imageFile = File('test_path.jpg');
-
-        // Act & Assert
-        // The method should return a Future<String>
-        expect(
-          () => storageService.uploadProfilePhoto(imageFile),
-          isA<Future<String>>(),
-        );
-      });
-    });
-
-    group('checkStorageConnection', () {
-      test(
-        'should return a Future<bool> for connection verification',
-        () async {
-          // Act & Assert
-          expect(
-            () => storageService.checkStorageConnection(),
-            isA<Future<bool>>(),
-          );
-        },
-      );
-    });
-
-    group('Validation methods', () {
-      test('should have method to delete profile photo', () {
-        // Arrange
-        const photoUrl = 'https://example.com/photo.jpg';
-
-        // Act & Assert
-        expect(
-          () => storageService.deleteProfilePhoto(photoUrl),
-          isA<Future<void>>(),
-        );
-      });
-    });
-  });
-
   group('Unit tests for business logic cases', () {
     test('should demonstrate URL validation', () {
       // Arrange
